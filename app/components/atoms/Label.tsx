@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable prettier/prettier */
-/* eslint-disable react/jsx-no-undef */
 import React, {useState} from 'react';
 import {
   View,
@@ -20,6 +17,14 @@ type LabelTypes = {
   onChangeText?: (text: string) => void;
   onBlur?: () => void;
   error?: string;
+  titleColor?: string; // لون العنوان
+  backgroundColor?: string; // لون الخلفية
+  placeholderColor?: string; // لون النص التوضيحي
+  borderColor?: string; // لون الحدود
+  inputTextColor?: string;
+  inputBackgroundColor?: string;
+  inputBorderColor?: string;
+  inputPlaceholderColor?: string;
 };
 
 const Label = (props: LabelTypes) => {
@@ -30,8 +35,11 @@ const Label = (props: LabelTypes) => {
     isPassword,
     value,
     onChangeText,
-    onBlur,
-    error,
+    titleColor,
+    backgroundColor,
+    placeholderColor,
+    borderColor,
+    inputBorderColor,
   } = props;
   const [isFocused, setIsFocused] = useState(false);
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
@@ -45,26 +53,30 @@ const Label = (props: LabelTypes) => {
       <View
         style={[
           styles.container,
-          {borderColor: isFocused ? '#007236' : '#FFFFFF80'},
+          {
+            borderColor: isFocused ? '#007236' : borderColor,
+            backgroundColor: backgroundColor,
+          },
         ]}>
         <View style={styles.iconContainer}>
           <Image source={iconSource} style={styles.icon} />
         </View>
         <View style={styles.inputContainer}>
-          <Text style={[styles.label, {color: isFocused ? '#007236' : '#FFF'}]}>
+          <Text
+            style={[styles.label, {color: isFocused ? '#007236' : titleColor}]}>
             {label}
           </Text>
           <View style={styles.passwordContainer}>
             <TextInput
-              style={styles.input}
+              style={[
+                styles.input,
+                {borderColor: isFocused ? '#007236' : inputBorderColor},
+              ]}
               placeholder={`Enter your ${title}`}
-              placeholderTextColor="#FFFFFF"
+              placeholderTextColor={placeholderColor}
               secureTextEntry={isPassword && !isPasswordVisible}
               onFocus={() => setIsFocused(true)}
-              onBlur={() => {
-                setIsFocused(false);
-                if (onBlur) onBlur();
-              }}
+              onBlur={() => setIsFocused(false)}
               value={value}
               onChangeText={onChangeText}
             />
@@ -85,7 +97,6 @@ const Label = (props: LabelTypes) => {
           </View>
         </View>
       </View>
-      {error && <Text style={styles.errorText}>{error}</Text>}
     </View>
   );
 };
@@ -94,12 +105,10 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     borderWidth: 1,
-    borderColor: '#FFFFFF80',
     borderRadius: 10,
     width: '100%',
     height: 70,
     marginBottom: 15,
-    backgroundColor: 'rgba(0, 0, 0, 0.3)',
   },
   iconContainer: {
     justifyContent: 'center',
@@ -115,13 +124,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   label: {
-    color: '#FFF',
     marginBottom: 5,
     fontWeight: 'bold',
   },
   input: {
     height: 40,
-    color: '#FFF',
     flex: 1,
   },
   passwordContainer: {
@@ -134,11 +141,6 @@ const styles = StyleSheet.create({
   eyeIcon: {
     width: 24,
     height: 24,
-    tintColor: '#FFF',
-  },
-  errorText: {
-    color: 'red',
-    marginTop: 5,
   },
 });
 

@@ -106,6 +106,9 @@ const styles = StyleSheet.create({
     fontSize: 14,
     textAlign: 'center',
   },
+  errorText: {
+    color: 'red',
+  },
 });
 
 export default styles;

@@ -61,8 +61,11 @@ const LoginScreen = ({navigation}) => {
               iconSource={require('../assets/icon1.png')}
               label="Username"
               onChangeText={handleChange('username')}
-              onBlur={handleBlur('username')}
               value={values.username}
+              titleColor="#FFF" // اللون الافتراضي للعنوان هو الأبيض
+              backgroundColor="rgba(0, 0, 0, 0.3)" // اللون الافتراضي للخلفية
+              placeholderColor="#FFFFFF"
+              borderColor="#FFFFFF80"
             />
             {errors.username && touched.username && (
               <Text style={styles.errorText}>{errors.username}</Text>
@@ -74,8 +77,11 @@ const LoginScreen = ({navigation}) => {
               label="Password"
               isPassword={true}
               onChangeText={handleChange('password')}
-              onBlur={handleBlur('password')}
               value={values.password}
+              titleColor="#FFF" // اللون الافتراضي للعنوان هو الأبيض
+              backgroundColor="rgba(0, 0, 0, 0.3)" // اللون الافتراضي للخلفية
+              placeholderColor="#FFFFFF"
+              borderColor="#FFFFFF80"
             />
             {errors.password && touched.password && (
               <Text style={styles.errorText}>{errors.password}</Text>
