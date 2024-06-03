@@ -8,6 +8,7 @@ import LoginButton from '../../atoms/LoginButton';
 function TransferOTP({navigation}) {
   const [otpCode, setOtpCode] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
+  const pageBackground = modalVisible ? '#00000080' : '#F1F3FB';
 
   const handleSubmit = () => {
     // أي عمليات تريدها لمعالجة النقر على زر Submit
@@ -15,7 +16,7 @@ function TransferOTP({navigation}) {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, {backgroundColor: pageBackground}]}>
       <LogoBar />
       <Text style={styles.title}>OTP</Text>
 
@@ -66,7 +67,7 @@ function TransferOTP({navigation}) {
               Transfer to Jsmine Robert was successful
             </Text>
             <LoginButton
-              onPress={() => setModalVisible(!modalVisible)}
+              onPress={() => navigation.navigate('Beneficiaries')}
               title={'Finish'}
             />
           </View>
