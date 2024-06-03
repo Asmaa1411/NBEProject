@@ -27,7 +27,7 @@ function TransferOTP({navigation}) {
           inputCount={5}
           handleTextChange={text => setOtpCode(text)}
           containerStyle={styles.otpContainer}
-          textInputStyle={styles.otpInput}
+          textInputStyle={[styles.otpInput, {height: 60}]}
         />
         <Text style={styles.transparentText}>Didn’t receive the code?</Text>
         <Text style={styles.transparentText2}>Request new one in 00:12</Text>
@@ -108,11 +108,12 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 20,
     color: '#1C2437',
+    marginBottom: 10,
   },
   helperText: {
     color: '#B7B7B7',
     fontSize: 16,
-    marginBottom: 40,
+    marginBottom: 30,
   },
   transparentText: {
     color: '#B7B7B7',
