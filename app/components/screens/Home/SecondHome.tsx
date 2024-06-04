@@ -9,6 +9,8 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import TopBar from '../../atoms/TopBar';
+import {historyData} from './historyData';
+import {green} from 'react-native-reanimated/lib/typescript/reanimated2/Colors';
 // import {useTheme} from '@react-navigation/native';
 
 const SecondHome = ({navigation}) => {
@@ -44,18 +46,18 @@ const SecondHome = ({navigation}) => {
                   style={styles.iconTopRight}
                 />
                 <View style={styles.cardNumber}>
-                  <Text style={styles.cardNumberSegment}>****</Text>
-                  <Text style={styles.cardNumberSegment}>****</Text>
-                  <Text style={styles.cardNumberSegment}>****</Text>
-                  <Text style={styles.cardNumberSegment}>6506</Text>
+                  <Text style={styles.cardNumberSegment}>
+                    **** **** **** 6506
+                  </Text>
+
                   <View style={styles.iconNextToNumber}>
                     <Image
                       source={require('../../assets/visaIgon2.png')}
-                      style={styles.iconNextToNumber}
+                      style={[styles.iconNextToNumber1, {flex: 1}]}
                     />
                     <Image
-                      source={require('../../assets/visaIqon3.png')}
-                      style={styles.iconNextToNumber}
+                      source={require('../../assets/wifi.png')}
+                      style={[styles.iconNextToNumber2, {flex: 1}]}
                     />
                   </View>
                 </View>
@@ -81,17 +83,23 @@ const SecondHome = ({navigation}) => {
 
       <Text style={styles.scrollTitle}>History</Text>
 
-      <ScrollView style={styles.verticalScrollView}>
-        {[1, 2, 3, 4, 5, 6, 7, 8].map((item, index) => (
-          <View key={index} style={styles.historyRow}>
-            <Image
-              source={require('../../assets/carrefour.png')}
-              style={styles.historyImage}
-            />
-            <View style={styles.historyContent}>
-              <Text style={styles.historySubTitle}>Carrefour</Text>
-              <Text style={styles.historyDate}>15-12-2021</Text>
+      <ScrollView
+        style={styles.verticalScrollView}
+        showsVerticalScrollIndicator={false}>
+        {historyData.map(item => (
+          <View key={item.id}>
+            <View style={styles.historyRow}>
+              <View style={styles.historyImage}>
+                <Image source={item.image} style={styles.historyImage} />
+              </View>
+
+              <View style={styles.historyContent}>
+                <Text style={styles.historySubTitle}>{item.subtitle}</Text>
+                <Text style={styles.historyDate}>{item.date}</Text>
+              </View>
+              <Text style={styles.historyPrice}>{item.price}</Text>
             </View>
+            <View style={styles.separator} />
           </View>
         ))}
       </ScrollView>
@@ -106,10 +114,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#F1F3FB',
   },
   scrollTitle: {
-    fontSize: 18,
-    fontWeight: '800',
-    marginVertical: 20,
-    color: '#000000',
+    fontSize: 20,
+    fontWeight: '700',
+    marginBottom: 10,
+    color: '#1C2437',
   },
   horizontalScrollView: {
     marginBottom: -300,
@@ -131,22 +139,34 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   historyImage: {
-    borderRadius: 25,
-    marginRight: 10,
+    marginRight: 6,
   },
   historyContent: {
     flex: 1,
     justifyContent: 'center',
   },
   historySubTitle: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: '#000000',
+    fontSize: 18,
+    fontWeight: '400',
+    color: '#1C2437',
     marginBottom: 5,
   },
   historyDate: {
-    color: '#000000',
+    color: '#1C2437',
     opacity: 0.5,
+    fontSize: 14,
+    fontWeight: '400',
+  },
+  historyPrice: {
+    fontSize: 18,
+    fontWeight: '700',
+    color: '#1C2437',
+  },
+  separator: {
+    height: 1,
+    backgroundColor: '#B7B7B7',
+    opacity: 0.5,
+    marginVertical: 3,
   },
   verticalScrollView: {
     flex: 1,
@@ -157,7 +177,7 @@ const styles = StyleSheet.create({
     left: 0,
     bottom: 0,
     right: 0,
-    backgroundColor: '#007236',
+    backgroundColor: '#00563B',
     borderRadius: 10,
     opacity: 0.5,
   },
@@ -170,34 +190,44 @@ const styles = StyleSheet.create({
   },
   cardBalance: {
     color: '#FFFFFF',
-    fontSize: 16,
+    fontSize: 25,
     marginBottom: 40,
+    fontWeight: '700',
   },
   cardNumber: {
     flexDirection: 'row',
-    marginBottom: 10,
     alignItems: 'center',
     justifyContent: 'space-between',
   },
   cardNumberSegment: {
     color: '#FFFFFF',
-    fontSize: 16,
+    fontSize: 25,
+    fontWeight: '400',
+    fontFamily: 'Gemunu Libre',
   },
   cardTextContainer: {
     flexDirection: 'row',
     marginTop: 10,
+    justifyContent: 'space-between',
+    gap: 80,
+    marginBottom: -30,
+    paddingTop: 20,
   },
   cardTextColumn: {
     flex: 1,
+    width: 200,
   },
   cardTextTitle: {
-    color: '#FFFFFF',
-    fontSize: 12,
+    color: '#848484',
+    fontSize: 14,
+    width: 150,
+    fontWeight: '700',
   },
   cardText: {
     color: '#FFFFFF',
     fontSize: 14,
-    fontWeight: 'bold',
+    fontWeight: '700',
+    width: 150,
   },
   iconTopRight: {
     position: 'absolute',
@@ -206,10 +236,14 @@ const styles = StyleSheet.create({
   },
   iconNextToNumber: {
     flexDirection: 'row',
-    width: 20,
-    height: 20,
-    marginLeft: 5,
+    width: 60,
+    height: 30,
   },
+  iconNextToNumber1: {
+    height: 22,
+    marginRight: 5,
+  },
+  iconNextToNumber2: {},
 });
 
 export default SecondHome;

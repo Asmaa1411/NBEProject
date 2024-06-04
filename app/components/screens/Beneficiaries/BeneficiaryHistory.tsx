@@ -9,6 +9,7 @@ import {
   ScrollView,
 } from 'react-native';
 import TopBar from '../../atoms/TopBar'; // تأكد من مسار استيراد TopBar
+import {historyData} from '../Home/historyData';
 
 const BeneficiaryHistory = ({navigation, route}) => {
   const {beneficiary} = route.params;
@@ -44,15 +45,17 @@ const BeneficiaryHistory = ({navigation, route}) => {
 
       <View style={styles.content}>
         {showHistory ? (
-          <ScrollView style={styles.verticalScrollView}>
-            {[1, 2, 3, 4, 5, 6, 7, 8].map((item, index) => (
-              <View key={index}>
+          <ScrollView
+            style={styles.verticalScrollView}
+            showsVerticalScrollIndicator={false}>
+            {historyData.map(item => (
+              <View key={item.id}>
                 <View style={styles.historyRow}>
                   <View style={styles.historyContent}>
-                    <Text style={styles.historySubTitle}>Carrefour</Text>
-                    <Text style={styles.historyDate}>15-12-2021</Text>
+                    <Text style={styles.historySubTitle}>{item.subtitle}</Text>
+                    <Text style={styles.historyDate}>{item.date}</Text>
                   </View>
-                  <Text style={styles.historyPrice}>$ 123.45</Text>
+                  <Text style={styles.historyPrice}>{item.price}</Text>
                 </View>
                 <View style={styles.separator} />
               </View>
@@ -149,31 +152,34 @@ const styles = StyleSheet.create({
   historyRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between', // This will place the price on the right
-    paddingVertical: 10, // Add some padding for better spacing
+    marginBottom: 10,
   },
   historyContent: {
     flex: 1,
+    justifyContent: 'center',
   },
   historySubTitle: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: '#000000',
+    fontSize: 18,
+    fontWeight: '400',
+    color: '#1C2437',
     marginBottom: 5,
   },
   historyDate: {
-    color: '#000000',
+    color: '#1C2437',
     opacity: 0.5,
+    fontSize: 14,
+    fontWeight: '400',
   },
   historyPrice: {
-    fontSize: 16,
-    fontWeight: 'bold',
+    fontSize: 18,
+    fontWeight: '700',
     color: '#1C2437',
   },
   separator: {
     height: 1,
-    backgroundColor: '#E0E0E0',
-    marginVertical: 10, // Add margin for spacing
+    backgroundColor: '#B7B7B7',
+    opacity: 0.5,
+    marginVertical: 3,
   },
   verticalScrollView: {
     flex: 1,

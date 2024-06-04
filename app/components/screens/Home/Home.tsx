@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import TopBar from '../../atoms/TopBar';
+import {historyData} from './historyData';
 
 const Home = ({navigation}) => {
   return (
@@ -61,8 +62,10 @@ const Home = ({navigation}) => {
       </View>
 
       <Text style={styles.scrollTitle}>Send Money</Text>
-
-      <ScrollView horizontal style={styles.horizontalScrollView}>
+      <ScrollView
+        horizontal
+        style={styles.horizontalScrollView}
+        showsHorizontalScrollIndicator={false}>
         <TouchableOpacity style={styles.send}>
           <Image
             source={require('../../assets/people1.png')}
@@ -95,17 +98,23 @@ const Home = ({navigation}) => {
 
       <Text style={styles.scrollTitle}>History</Text>
 
-      <ScrollView style={styles.verticalScrollView}>
-        {[1, 2, 3, 4].map((item, index) => (
-          <View key={index} style={styles.historyRow}>
-            <Image
-              source={require('../../assets/carrefour.png')}
-              style={styles.historyImage}
-            />
-            <View style={styles.historyContent}>
-              <Text style={styles.historySubTitle}>Carrefour</Text>
-              <Text style={styles.historyDate}>15-12-2021</Text>
+      <ScrollView
+        style={styles.verticalScrollView}
+        showsVerticalScrollIndicator={false}>
+        {historyData.map(item => (
+          <View key={item.id}>
+            <View style={styles.historyRow}>
+              <View style={styles.historyImage}>
+                <Image source={item.image} style={styles.historyImage} />
+              </View>
+
+              <View style={styles.historyContent}>
+                <Text style={styles.historySubTitle}>{item.subtitle}</Text>
+                <Text style={styles.historyDate}>{item.date}</Text>
+              </View>
+              <Text style={styles.historyPrice}>{item.price}</Text>
             </View>
+            <View style={styles.separator} />
           </View>
         ))}
       </ScrollView>
@@ -145,24 +154,25 @@ const styles = StyleSheet.create({
   },
   title: {
     textAlign: 'center',
-    fontSize: 12,
-    fontWeight: 'bold',
-    color: '#000000',
+    fontSize: 14,
+    fontWeight: '400',
+    fontFamily: 'Roboto',
+    color: '#1C2437',
+    marginBottom: 10,
   },
   scrollTitle: {
-    fontSize: 18,
-    fontWeight: '800',
+    fontSize: 20,
+    fontWeight: '700',
     marginBottom: 10,
-    color: '#000000',
+    color: '#1C2437',
   },
 
   send: {
-    width: 90,
-    height: 110,
+    width: 85,
+    height: 90,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 10,
-    backgroundColor: '#FFF',
     marginRight: 10,
   },
   buttonImage: {
@@ -171,10 +181,11 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
   buttonText: {
-    fontSize: 12,
-    fontWeight: 'bold',
-    color: '#000000',
+    fontSize: 14,
+    fontWeight: '400',
+    color: '#1C2437',
     marginTop: -20,
+    fontFamily: 'Roboto',
   },
   historyRow: {
     flexDirection: 'row',
@@ -182,30 +193,40 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   historyImage: {
-    width: 50,
-    height: 50,
-    borderRadius: 25,
-    marginRight: 10,
+    marginRight: 6,
   },
   historyContent: {
     flex: 1,
     justifyContent: 'center',
   },
   historySubTitle: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: '#000000',
+    fontSize: 18,
+    fontWeight: '400',
+    color: '#1C2437',
     marginBottom: 5,
   },
   historyDate: {
-    color: '#000000',
+    color: '#1C2437',
     opacity: 0.5,
+    fontSize: 14,
+    fontWeight: '400',
   },
   horizontalScrollView: {
     marginBottom: 10,
   },
   verticalScrollView: {
     maxHeight: 185,
+  },
+  historyPrice: {
+    fontSize: 18,
+    fontWeight: '700',
+    color: '#1C2437',
+  },
+  separator: {
+    height: 1,
+    backgroundColor: '#B7B7B7',
+    opacity: 0.5,
+    marginVertical: 3,
   },
 });
 
