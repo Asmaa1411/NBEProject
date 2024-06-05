@@ -192,18 +192,18 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     fontSize: 25,
     marginBottom: 40,
-    fontWeight: '700',
+    fontFamily: 'GemunuLibre-Bold',
   },
   cardNumber: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    fontFamily: 'GemunuLibre-Regular',
   },
   cardNumberSegment: {
     color: '#FFFFFF',
     fontSize: 25,
-    fontWeight: '400',
-    fontFamily: 'Gemunu Libre',
+    fontFamily: 'GemunuLibre-Regular',
   },
   cardTextContainer: {
     flexDirection: 'row',
@@ -221,12 +221,12 @@ const styles = StyleSheet.create({
     color: '#848484',
     fontSize: 14,
     width: 150,
-    fontWeight: '700',
+    fontFamily: 'GemunuLibre-Bold',
   },
   cardText: {
     color: '#FFFFFF',
     fontSize: 14,
-    fontWeight: '700',
+    fontFamily: 'GemunuLibre-Bold',
     width: 150,
   },
   iconTopRight: {

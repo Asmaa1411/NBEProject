@@ -1,0 +1,33 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "app/components/assets/fonts/GemunuLibre-Bold.ttf",
+      "sha1": "661072c62e132114df3581a19f142f0b60b67d35"
+    },
+    {
+      "path": "app/components/assets/fonts/GemunuLibre-ExtraBold.ttf",
+      "sha1": "9e52dccef66dcfd699d997554c3b7104eb1a06ac"
+    },
+    {
+      "path": "app/components/assets/fonts/GemunuLibre-ExtraLight.ttf",
+      "sha1": "46b5881dab6d08207c02d8300131c6f5c868dfbb"
+    },
+    {
+      "path": "app/components/assets/fonts/GemunuLibre-Light.ttf",
+      "sha1": "68af78543a300a027c24bed5b4577912863ea4f8"
+    },
+    {
+      "path": "app/components/assets/fonts/GemunuLibre-Medium.ttf",
+      "sha1": "219f4453e35abe6bc37e6ca6666c712523db0844"
+    },
+    {
+      "path": "app/components/assets/fonts/GemunuLibre-Regular.ttf",
+      "sha1": "bac4d38efd5fd73b41a9fac4fb1a9b802784c0da"
+    },
+    {
+      "path": "app/components/assets/fonts/GemunuLibre-SemiBold.ttf",
+      "sha1": "075a7cde2edb2f143c0e8fd283e6475c3b1e3306"
+    }
+  ]
+}

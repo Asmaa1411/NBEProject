@@ -61,7 +61,6 @@ const styles = StyleSheet.create({
     color: '#fff',
     textDecorationLine: 'underline',
   },
-
   fingerprintButton: {
     backgroundColor: '#007236',
     borderRadius: 10,

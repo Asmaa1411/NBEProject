@@ -14,6 +14,13 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		7699B88040F8A987B510C191 /* libPods-NBEProject-NBEProjectTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-NBEProject-NBEProjectTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		DB236DBC43C84594B5DE6650 /* GemunuLibre-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F1ADBA77DC314BC69161161C /* GemunuLibre-Bold.ttf */; };
+		7288689CDEA94AD5A926D9E6 /* GemunuLibre-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 030720C24E1643AABDB43C67 /* GemunuLibre-Light.ttf */; };
+		E0D5EA5329E44F05A28F3232 /* GemunuLibre-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D53EE5899A0241E99509FF80 /* GemunuLibre-Regular.ttf */; };
+		2499B66DF9E9481FAAC127AC /* GemunuLibre-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 95241AF2EDF64AE7840F592C /* GemunuLibre-ExtraBold.ttf */; };
+		A9498590C82841B2AEAD7625 /* GemunuLibre-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 27DA64B8163A4FF28C2B67EB /* GemunuLibre-ExtraLight.ttf */; };
+		9A3139FC7DD94B198B429965 /* GemunuLibre-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3815900FC1294EC18694930B /* GemunuLibre-Medium.ttf */; };
+		507C7CD8D8CB45D5A5E305C4 /* GemunuLibre-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DFE3F88652F74DEA866D55BD /* GemunuLibre-SemiBold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +43,7 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = NBEProject/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = NBEProject/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = NBEProject/main.m; sourceTree = "<group>"; };
-	    13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = NBEProject/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = NBEProject/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		19F6CBCC0A4E27FBF8BF4A61 /* libPods-NBEProject-NBEProjectTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NBEProject-NBEProjectTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B4392A12AC88292D35C810B /* Pods-NBEProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NBEProject.debug.xcconfig"; path = "Target Support Files/Pods-NBEProject/Pods-NBEProject.debug.xcconfig"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-NBEProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NBEProject.release.xcconfig"; path = "Target Support Files/Pods-NBEProject/Pods-NBEProject.release.xcconfig"; sourceTree = "<group>"; };
@@ -45,6 +52,13 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = NBEProject/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-NBEProject-NBEProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NBEProject-NBEProjectTests.release.xcconfig"; path = "Target Support Files/Pods-NBEProject-NBEProjectTests/Pods-NBEProject-NBEProjectTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		F1ADBA77DC314BC69161161C /* GemunuLibre-Bold.ttf */ = {isa = PBXFileReference; name = "GemunuLibre-Bold.ttf"; path = "../app/components/assets/fonts/GemunuLibre-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		030720C24E1643AABDB43C67 /* GemunuLibre-Light.ttf */ = {isa = PBXFileReference; name = "GemunuLibre-Light.ttf"; path = "../app/components/assets/fonts/GemunuLibre-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		D53EE5899A0241E99509FF80 /* GemunuLibre-Regular.ttf */ = {isa = PBXFileReference; name = "GemunuLibre-Regular.ttf"; path = "../app/components/assets/fonts/GemunuLibre-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		95241AF2EDF64AE7840F592C /* GemunuLibre-ExtraBold.ttf */ = {isa = PBXFileReference; name = "GemunuLibre-ExtraBold.ttf"; path = "../app/components/assets/fonts/GemunuLibre-ExtraBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		27DA64B8163A4FF28C2B67EB /* GemunuLibre-ExtraLight.ttf */ = {isa = PBXFileReference; name = "GemunuLibre-ExtraLight.ttf"; path = "../app/components/assets/fonts/GemunuLibre-ExtraLight.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		3815900FC1294EC18694930B /* GemunuLibre-Medium.ttf */ = {isa = PBXFileReference; name = "GemunuLibre-Medium.ttf"; path = "../app/components/assets/fonts/GemunuLibre-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		DFE3F88652F74DEA866D55BD /* GemunuLibre-SemiBold.ttf */ = {isa = PBXFileReference; name = "GemunuLibre-SemiBold.ttf"; path = "../app/components/assets/fonts/GemunuLibre-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +138,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				1338418E58EB44E187F22FF5 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -149,6 +164,21 @@
 			);
 			path = Pods;
 			sourceTree = "<group>";
+		};
+		1338418E58EB44E187F22FF5 /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				F1ADBA77DC314BC69161161C /* GemunuLibre-Bold.ttf */,
+				030720C24E1643AABDB43C67 /* GemunuLibre-Light.ttf */,
+				D53EE5899A0241E99509FF80 /* GemunuLibre-Regular.ttf */,
+				95241AF2EDF64AE7840F592C /* GemunuLibre-ExtraBold.ttf */,
+				27DA64B8163A4FF28C2B67EB /* GemunuLibre-ExtraLight.ttf */,
+				3815900FC1294EC18694930B /* GemunuLibre-Medium.ttf */,
+				DFE3F88652F74DEA866D55BD /* GemunuLibre-SemiBold.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -245,6 +275,13 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				DB236DBC43C84594B5DE6650 /* GemunuLibre-Bold.ttf in Resources */,
+				7288689CDEA94AD5A926D9E6 /* GemunuLibre-Light.ttf in Resources */,
+				E0D5EA5329E44F05A28F3232 /* GemunuLibre-Regular.ttf in Resources */,
+				2499B66DF9E9481FAAC127AC /* GemunuLibre-ExtraBold.ttf in Resources */,
+				A9498590C82841B2AEAD7625 /* GemunuLibre-ExtraLight.ttf in Resources */,
+				9A3139FC7DD94B198B429965 /* GemunuLibre-Medium.ttf in Resources */,
+				507C7CD8D8CB45D5A5E305C4 /* GemunuLibre-SemiBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
