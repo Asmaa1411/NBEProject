@@ -2,19 +2,16 @@ import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import MapView, {Marker} from 'react-native-maps';
 import TopBar from '../../atoms/TopBar';
-// import MapViewDirections from 'react-native-maps-directions';
 
-const ATMs = () => {
+const ATMs = ({navigation}) => {
   const atms = [
     {id: 1, name: 'ATM 1', latitude: 30.0444, longitude: 31.2357},
     {id: 2, name: 'ATM 2', latitude: 30.0544, longitude: 31.2457},
     // Add more ATMs as needed
   ];
 
-  // const origin = {latitude: 30.0444, longitude: 31.2357}; // Starting point
-  // const destination = {latitude: 30.0544, longitude: 31.2457}; // Ending point
   const handleMenuPress = () => {
-    // Add your menu button handler here
+    navigation.openDrawer();
   };
 
   const handleNotificationPress = () => {
@@ -23,10 +20,6 @@ const ATMs = () => {
 
   return (
     <View style={styles.container}>
-      <TopBar
-        onMenuPress={handleMenuPress}
-        onNotificationPress={handleNotificationPress}
-      />
       <MapView
         style={styles.map}
         initialRegion={{
@@ -42,15 +35,12 @@ const ATMs = () => {
             title={atm.name}
           />
         ))}
-
-        {/* <MapViewDirections
-          origin={origin}
-          destination={destination}
-          apikey={'AIzaSyAd-n52_dO_t4YcUGm6UiIC8ubfI7JHdBE'}
-          strokeWidth={3}
-          strokeColor="hotpink"
-        /> */}
       </MapView>
+      <TopBar
+        navigation={navigation}
+        onNotificationPress={handleNotificationPress}
+        customStyle={styles.transparentTopBar}
+      />
     </View>
   );
 };
@@ -61,6 +51,14 @@ const styles = StyleSheet.create({
   },
   map: {
     flex: 1,
+  },
+  transparentTopBar: {
+    backgroundColor: 'transparent', // اجعل الخلفية شفافة
+    position: 'absolute', // تأكد من أن الزر العلوي يظهر فوق الخريطة
+    top: 0,
+    left: 0,
+    right: 0,
+    zIndex: 1,
   },
 });
 

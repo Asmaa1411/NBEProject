@@ -115,9 +115,9 @@ const styles = StyleSheet.create({
   },
   scrollTitle: {
     fontSize: 20,
-    fontWeight: '700',
     marginBottom: 10,
     color: '#1C2437',
+    fontFamily: 'Roboto-Bold',
   },
   horizontalScrollView: {
     marginBottom: -300,
@@ -147,19 +147,19 @@ const styles = StyleSheet.create({
   },
   historySubTitle: {
     fontSize: 18,
-    fontWeight: '400',
     color: '#1C2437',
     marginBottom: 5,
+    fontFamily: 'Roboto-Regular',
   },
   historyDate: {
     color: '#1C2437',
     opacity: 0.5,
     fontSize: 14,
-    fontWeight: '400',
+    fontFamily: 'Roboto-Regular',
   },
   historyPrice: {
     fontSize: 18,
-    fontWeight: '700',
+    fontFamily: 'Roboto-Bold',
     color: '#1C2437',
   },
   separator: {
@@ -236,14 +236,16 @@ const styles = StyleSheet.create({
   },
   iconNextToNumber: {
     flexDirection: 'row',
-    width: 60,
-    height: 30,
+    width: 40,
+    position: 'absolute',
+    right: 30,
   },
-  iconNextToNumber1: {
-    height: 22,
-    marginRight: 5,
+  iconNextToNumber2: {
+    height: 20,
+    position: 'absolute',
+    top: 3,
+    left: 50,
   },
-  iconNextToNumber2: {},
 });
 
 export default SecondHome;

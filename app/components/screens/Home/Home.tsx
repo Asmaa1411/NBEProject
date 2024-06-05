@@ -162,9 +162,9 @@ const styles = StyleSheet.create({
   },
   scrollTitle: {
     fontSize: 20,
-    fontWeight: '700',
     marginBottom: 10,
     color: '#1C2437',
+    fontFamily: 'Roboto-Bold',
   },
 
   send: {
@@ -182,10 +182,9 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontSize: 14,
-    fontWeight: '400',
+    fontFamily: 'Roboto-Regular',
     color: '#1C2437',
     marginTop: -20,
-    fontFamily: 'Roboto',
   },
   historyRow: {
     flexDirection: 'row',
@@ -201,7 +200,7 @@ const styles = StyleSheet.create({
   },
   historySubTitle: {
     fontSize: 18,
-    fontWeight: '400',
+    fontFamily: 'Roboto-Regular',
     color: '#1C2437',
     marginBottom: 5,
   },
@@ -209,7 +208,7 @@ const styles = StyleSheet.create({
     color: '#1C2437',
     opacity: 0.5,
     fontSize: 14,
-    fontWeight: '400',
+    fontFamily: 'Roboto-Regular',
   },
   horizontalScrollView: {
     marginBottom: 10,
@@ -219,7 +218,7 @@ const styles = StyleSheet.create({
   },
   historyPrice: {
     fontSize: 18,
-    fontWeight: '700',
+    fontFamily: 'Roboto-Bold',
     color: '#1C2437',
   },
   separator: {

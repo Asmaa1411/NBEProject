@@ -2,17 +2,15 @@ import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
 import {DrawerActions} from '@react-navigation/native';
 
-const TopBar = ({navigation, onNotificationPress}) => {
+const TopBar = ({navigation, onNotificationPress, customStyle}) => {
   const openDrawer = () => {
     navigation.openDrawer();
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, customStyle]}>
       <View style={styles.leftContainer}>
-        <TouchableOpacity
-          onPress={() => navigation.openDrawer()}
-          style={styles.menuButton}>
+        <TouchableOpacity onPress={openDrawer} style={styles.menuButton}>
           <Image source={require('../assets/menu.png')} style={styles.icon} />
         </TouchableOpacity>
         <View style={styles.personIconContainer}>
@@ -46,7 +44,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingTop: 40,
     paddingBottom: 10,
-
     backgroundColor: '#F1F3FB',
   },
   leftContainer: {
