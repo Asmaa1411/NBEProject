@@ -7,6 +7,10 @@ const ATMs = ({navigation}) => {
   const atms = [
     {id: 1, name: 'ATM 1', latitude: 30.0444, longitude: 31.2357},
     {id: 2, name: 'ATM 2', latitude: 30.0544, longitude: 31.2457},
+    {id: 3, name: 'ATM 3', latitude: 30.0644, longitude: 31.2357},
+    {id: 4, name: 'ATM 4', latitude: 30.0244, longitude: 31.2457},
+    {id: 5, name: 'ATM 5', latitude: 30.0344, longitude: 31.2157},
+    {id: 6, name: 'ATM 6', latitude: 30.0744, longitude: 31.2157},
     // Add more ATMs as needed
   ];
 
@@ -53,8 +57,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   transparentTopBar: {
-    backgroundColor: 'transparent', // اجعل الخلفية شفافة
-    position: 'absolute', // تأكد من أن الزر العلوي يظهر فوق الخريطة
+    backgroundColor: 'transparent',
+    position: 'absolute',
     top: 0,
     left: 0,
     right: 0,
