@@ -139,7 +139,11 @@ function MyTabs() {
         options={{headerShown: false}}
       />
       <Tab.Screen name="ATMs" component={ATMs} options={{headerShown: false}} />
-      <Tab.Screen name="AirPay" component={AirPay} />
+      <Tab.Screen
+        name="AirPay"
+        component={AirPay}
+        options={{headerShown: false}}
+      />
     </Tab.Navigator>
   );
 }
