@@ -13,9 +13,13 @@ import transferIcon from '../assets/transferIqon.png';
 import beneficiariesIcon from '../assets/beneficiariesIqon.png';
 import atmsIcon from '../assets/atmsIqon.png';
 import airpayIcon from '../assets/airPayIcon.png';
-import {createDrawerNavigator} from '@react-navigation/drawer';
+import {
+  DrawerContentScrollView,
+  createDrawerNavigator,
+} from '@react-navigation/drawer';
 import SecondHome from './Home/SecondHome';
 import BeneficiaryHistory from './Beneficiaries/BeneficiaryHistory';
+import {Text} from 'react-native-elements';
 
 const Tab = createBottomTabNavigator();
 
@@ -96,7 +100,14 @@ const Drawer = createDrawerNavigator();
 
 function DrawerNavigator() {
   return (
-    <Drawer.Navigator initialRouteName="Home">
+    <Drawer.Navigator
+      initialRouteName="Home"
+      // drawerContent={props => (
+      //   <DrawerContentScrollView {...props}>
+      //     <Text>Hello</Text>
+      //   </DrawerContentScrollView>
+      // )}
+    >
       <Drawer.Screen
         name="Home1"
         component={Home}
