@@ -1,6 +1,7 @@
-import React from 'react';
+/* eslint-disable react/no-unstable-nested-components */
+import React, {useContext, useState} from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {Image, TouchableOpacity, View, StyleSheet} from 'react-native';
+import {Image, TouchableOpacity, View, StyleSheet, Text} from 'react-native';
 import Home from './Home/Home';
 import Transfer from './Transfer/Transfer';
 import Beneficiaries from './Beneficiaries/Beneficiaries';
@@ -20,9 +21,10 @@ import {
 } from '@react-navigation/drawer';
 import SecondHome from './Home/SecondHome';
 import BeneficiaryHistory from './Beneficiaries/BeneficiaryHistory';
-import {Text} from 'react-native-elements';
 import Logo from '../atoms/Logo';
 import SquareButton from '../atoms/SquareButton';
+import {Switch} from 'react-native-gesture-handler';
+import {ThemeContext} from '../../../App';
 
 const Tab = createBottomTabNavigator();
 
@@ -44,8 +46,10 @@ const getTabBarIcon = routeName => {
 };
 
 const MyTabBar = ({state, descriptors, navigation}) => {
+  const {dark} = useContext(ThemeContext);
+  console.log(dark, 'fwefwfwef');
   return (
-    <View style={styles.tabBar}>
+    <View style={[styles.tabBar, {backgroundColor: dark ? 'black' : 'white'}]}>
       {state.routes.map((route, index) => {
         const {options} = descriptors[route.key];
         const isFocused = state.index === index;
@@ -171,38 +175,51 @@ function DrawerNavigator() {
                 activeTintColor="#FFF"
               />
             </View>
-            <DrawerItem
-              label="Offers"
-              onPress={() => {}}
-              activeBackgroundColor="#007236"
-              inactiveBackgroundColor="#FFF"
-              inactiveTintColor="#000000"
-              activeTintColor="#FFF"
-            />
-            <DrawerItem
-              label="Customer Services"
-              onPress={() => {}}
-              activeBackgroundColor="#007236"
-              inactiveBackgroundColor="#FFF"
-              inactiveTintColor="#000000"
-              activeTintColor="#FFF"
-            />
-            <DrawerItem
-              label="Calculators"
-              onPress={() => {}}
-              activeBackgroundColor="#007236"
-              inactiveBackgroundColor="#FFF"
-              inactiveTintColor="#000000"
-              activeTintColor="#FFF"
-            />
-            <DrawerItem
-              label="Dark Mode"
-              onPress={() => {}}
-              activeBackgroundColor="#007236"
-              inactiveBackgroundColor="#FFF"
-              inactiveTintColor="#000000"
-              activeTintColor="#FFF"
-            />
+            <View style={styles.row}>
+              <Image source={require('../assets/drawer1.png')} />
+              <DrawerItem
+                label="Offers"
+                onPress={() => {}}
+                activeBackgroundColor="#007236"
+                inactiveBackgroundColor="#FFF"
+                inactiveTintColor="#000000"
+                activeTintColor="#FFF"
+              />
+            </View>
+            <View style={styles.row}>
+              <Image source={require('../assets/drawer1.png')} />
+              <DrawerItem
+                label="Customer Services"
+                onPress={() => {}}
+                activeBackgroundColor="#007236"
+                inactiveBackgroundColor="#FFF"
+                inactiveTintColor="#000000"
+                activeTintColor="#FFF"
+              />
+            </View>
+            <View style={styles.row}>
+              <Image source={require('../assets/drawer1.png')} />
+              <DrawerItem
+                label="Calculators"
+                onPress={() => {}}
+                activeBackgroundColor="#007236"
+                inactiveBackgroundColor="#FFF"
+                inactiveTintColor="#000000"
+                activeTintColor="#FFF"
+              />
+            </View>
+            <View style={styles.row}>
+              <Image source={require('../assets/drawer1.png')} />
+              <DrawerItem
+                label="Dark Mode"
+                onPress={() => {}}
+                activeBackgroundColor="#007236"
+                inactiveBackgroundColor="#FFF"
+                inactiveTintColor="#000000"
+                activeTintColor="#FFF"
+              />
+              {/* <Switch value={dark} onChange={() => setDark(!dark)} /> */}
+            </View>
             <TouchableOpacity style={styles.beneficiaryInfoContainer}>
               <Image
                 source={require('../assets/hala.png')}
@@ -273,7 +290,6 @@ const styles = StyleSheet.create({
     height: 80,
     borderTopWidth: 1,
     borderTopColor: '#dddddd',
-    backgroundColor: '#FFFFFF',
   },
   tabButton: {
     flex: 1,
@@ -320,6 +336,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#1C2437',
   },
+  row: {},
 });
 
 export default MyTabs;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {
   View,
   Image,
@@ -9,10 +9,13 @@ import {
 } from 'react-native';
 import TopBar from '../../atoms/TopBar';
 import {historyData} from './historyData';
+import {ThemeContext} from '../../../../App';
 
 const Home = ({navigation}) => {
+  const {dark} = useContext(ThemeContext);
   return (
-    <View style={styles.container}>
+    <View
+      style={[styles.container, {backgroundColor: dark ? 'black' : 'white'}]}>
       <TopBar navigation={navigation} onNotificationPress={() => {}} />
       <TouchableOpacity onPress={() => navigation.navigate('SecondHome')}>
         <Image
@@ -126,7 +129,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingHorizontal: 10,
-    backgroundColor: '#F1F3FB',
   },
   innerContainer: {
     paddingHorizontal: 10,
