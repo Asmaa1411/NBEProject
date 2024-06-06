@@ -15,11 +15,14 @@ import atmsIcon from '../assets/atmsIqon.png';
 import airpayIcon from '../assets/airPayIcon.png';
 import {
   DrawerContentScrollView,
+  DrawerItem,
   createDrawerNavigator,
 } from '@react-navigation/drawer';
 import SecondHome from './Home/SecondHome';
 import BeneficiaryHistory from './Beneficiaries/BeneficiaryHistory';
 import {Text} from 'react-native-elements';
+import Logo from '../atoms/Logo';
+import SquareButton from '../atoms/SquareButton';
 
 const Tab = createBottomTabNavigator();
 
@@ -102,12 +105,117 @@ function DrawerNavigator() {
   return (
     <Drawer.Navigator
       initialRouteName="Home"
-      // drawerContent={props => (
-      //   <DrawerContentScrollView {...props}>
-      //     <Text>Hello</Text>
-      //   </DrawerContentScrollView>
-      // )}
-    >
+      drawerContent={props => {
+        const {routeNames, index} = props.state;
+        const focused = routeNames[index];
+        console.log('focused', focused);
+        return (
+          <DrawerContentScrollView {...props}>
+            <View style={styles.logoButtonContainer}>
+              <View>
+                <Image source={require('../assets/logoTransfer.png')} />
+              </View>
+              {/* زرار AR  */}
+            </View>
+            <View style={styles.row}>
+              <Image source={require('../assets/drawer1.png')} />
+              <DrawerItem
+                label="Account Summary"
+                onPress={() => {}}
+                activeBackgroundColor="#007236"
+                inactiveBackgroundColor="#FFF"
+                inactiveTintColor="#000000"
+                activeTintColor="#FFF"
+              />
+            </View>
+            <View style={styles.row}>
+              <Image source={require('../assets/drawer1.png')} />
+              <DrawerItem
+                label="Open Certificates & Deposits"
+                onPress={() => {}}
+                activeBackgroundColor="#007236"
+                inactiveBackgroundColor="#FFF"
+                inactiveTintColor="#000000"
+                activeTintColor="#FFF"
+              />
+            </View>
+            <View style={styles.row}>
+              <Image source={require('../assets/drawer1.png')} />
+              <DrawerItem
+                label="Payement Services"
+                activeBackgroundColor="#007236"
+                inactiveBackgroundColor="#FFF"
+                inactiveTintColor="#000000"
+                activeTintColor="#FFF"
+              />
+            </View>
+            <View style={styles.row}>
+              <Image source={require('../assets/drawer1.png')} />
+              <DrawerItem
+                label="Cards Services"
+                onPress={() => {}}
+                activeBackgroundColor="#007236"
+                inactiveBackgroundColor="#FFF"
+                inactiveTintColor="#000000"
+                activeTintColor="#FFF"
+              />
+            </View>
+            <View style={styles.row}>
+              <Image source={require('../assets/drawer1.png')} />
+              <DrawerItem
+                label="Hard Token"
+                onPress={() => {}}
+                activeBackgroundColor="#007236"
+                inactiveBackgroundColor="#FFF"
+                inactiveTintColor="#000000"
+                activeTintColor="#FFF"
+              />
+            </View>
+            <DrawerItem
+              label="Offers"
+              onPress={() => {}}
+              activeBackgroundColor="#007236"
+              inactiveBackgroundColor="#FFF"
+              inactiveTintColor="#000000"
+              activeTintColor="#FFF"
+            />
+            <DrawerItem
+              label="Customer Services"
+              onPress={() => {}}
+              activeBackgroundColor="#007236"
+              inactiveBackgroundColor="#FFF"
+              inactiveTintColor="#000000"
+              activeTintColor="#FFF"
+            />
+            <DrawerItem
+              label="Calculators"
+              onPress={() => {}}
+              activeBackgroundColor="#007236"
+              inactiveBackgroundColor="#FFF"
+              inactiveTintColor="#000000"
+              activeTintColor="#FFF"
+            />
+            <DrawerItem
+              label="Dark Mode"
+              onPress={() => {}}
+              activeBackgroundColor="#007236"
+              inactiveBackgroundColor="#FFF"
+              inactiveTintColor="#000000"
+              activeTintColor="#FFF"
+            />
+            <TouchableOpacity style={styles.beneficiaryInfoContainer}>
+              <Image
+                source={require('../assets/hala.png')}
+                style={styles.benImage}
+              />
+              <View style={styles.beneficiaryDetails}>
+                <Text style={styles.benName}>Asmaa Saad</Text>
+                <Text style={styles.benDetail}>+ 01025874963</Text>
+              </View>
+            </TouchableOpacity>
+          </DrawerContentScrollView>
+        );
+      }}>
       <Drawer.Screen
         name="Home1"
         component={Home}
@@ -176,6 +284,42 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   icon: {},
+  logoButtonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginTop: 30,
+  },
+  backButtonContainer: {
+    backgroundColor: '#007236',
+    width: 40,
+    height: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 10,
+  },
+  beneficiaryInfoContainer: {
+    flexDirection: 'row',
+    backgroundColor: 'white',
+    padding: 16,
+    marginHorizontal: 16,
+    borderRadius: 10,
+    alignItems: 'center',
+  },
+  benImage: {
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+    marginRight: 16,
+  },
+  beneficiaryDetails: {
+    flex: 1,
+  },
+  benName: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#1C2437',
+  },
 });
 
 export default MyTabs;

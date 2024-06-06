@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
 import {TouchableOpacity, Text, StyleSheet} from 'react-native';
+import {color} from 'react-native-elements/dist/helpers';
 
 const SquareButton = ({onPress, title, color, fontSize = 16}) => {
   return (
