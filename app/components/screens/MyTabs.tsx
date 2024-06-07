@@ -53,7 +53,7 @@ const MyTabBar = ({state, descriptors, navigation}) => {
   const {dark} = useContext(ThemeContext);
   return (
     <View
-      style={[styles.tabBar, {backgroundColor: dark ? '#1f1e1e' : '#F1F3FB'}]}>
+      style={[styles.tabBar, {backgroundColor: dark ? '#1f1e1e' : '#FFFFFF'}]}>
       {state.routes.map((route, index) => {
         const {options} = descriptors[route.key];
         const isFocused = state.index === index;
@@ -246,7 +246,7 @@ const styles = StyleSheet.create({
   tabBar: {
     flexDirection: 'row',
     height: 80,
-    borderTopWidth: 1,
+    borderTopWidth: 0.5,
     borderTopColor: '#B7B7B7',
   },
   tabButton: {
@@ -300,7 +300,7 @@ const getStyle = (dark: any) =>
     },
     beneficiaryInfoContainer: {
       flexDirection: 'row',
-      backgroundColor: dark ? '#b9b6b6' : '#f8f8fa',
+      backgroundColor: dark ? '#b9b6b6' : '#FFF',
       padding: 16,
       marginHorizontal: 16,
       borderRadius: 10,
@@ -326,7 +326,7 @@ const getStyle = (dark: any) =>
       justifyContent: 'center',
       alignItems: 'center',
       borderRadius: 10,
-      backgroundColor: dark ? '#b4b3b3' : '#F1F3FB',
+      backgroundColor: dark ? '#b4b3b3' : '#FFF',
       marginRight: 15,
       marginBottom: 8,
     },

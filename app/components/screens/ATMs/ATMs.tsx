@@ -2,6 +2,7 @@ import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import MapView, {Marker} from 'react-native-maps';
 import TopBar from '../../atoms/TopBar';
+import {black} from 'react-native-paper/lib/typescript/styles/themes/v2/colors';
 
 const ATMs = ({navigation}) => {
   const atms = [
