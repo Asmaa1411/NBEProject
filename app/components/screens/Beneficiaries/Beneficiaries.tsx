@@ -1,9 +1,12 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import AddButton from '../../atoms/Add'; // تأكد من مسار استيراد AddButton
 import TopBar from '../../atoms/TopBar'; // تأكد من مسار استيراد TopBar
+import {ThemeContext} from '../../../../App';
 
 const Beneficiaries = ({navigation, route}) => {
+  const {dark} = useContext(ThemeContext);
+  const styles = getStyle(dark);
   const [beneficiaries, setBeneficiaries] = useState([]);
 
   useEffect(() => {
@@ -67,78 +70,79 @@ const Beneficiaries = ({navigation, route}) => {
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#F1F3FB',
-  },
-  header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginHorizontal: 16,
-    marginVertical: 20,
-  },
-  headerTitle: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: '#1C2437',
-  },
-  content: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  image: {
-    marginBottom: 20,
-  },
-  noBeneficiariesText: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#1C2437',
-    marginBottom: 10,
-  },
-  noBeneficiaries: {
-    flex: 1,
-    backgroundColor: '#F1F3FB',
-  },
-  descriptionText: {
-    fontSize: 16,
-    color: '#464665',
-    textAlign: 'center',
-    marginHorizontal: 20,
-    marginBottom: 20,
-  },
-  beneficiaryContainer: {
-    borderRadius: 20,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'white',
-    width: 77,
-    height: 86,
-    margin: 10,
-    padding: 50,
-  },
-  benImage: {
-    width: 77,
-    height: 86,
-    borderRadius: 20,
-    marginBottom: 20,
-  },
-  benName: {
-    position: 'absolute',
-    flex: 1,
-    bottom: 0,
-    color: '#1C2437',
-    paddingBottom: 10,
-    fontSize: 14,
-    fontWeight: '400',
-  },
-  newBeneficiary: {
-    flex: 1,
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-  },
-});
+const getStyle = (dark: any) =>
+  StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: dark ? '#1f1e1e' : '#F1F3FB',
+    },
+    header: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      marginHorizontal: 16,
+      marginVertical: 20,
+    },
+    headerTitle: {
+      fontSize: 20,
+      fontWeight: 'bold',
+      color: dark ? '#afaeae' : '#1C2437',
+    },
+    content: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    image: {
+      marginBottom: 20,
+    },
+    noBeneficiariesText: {
+      fontSize: 18,
+      fontWeight: 'bold',
+      color: dark ? '#afaeae' : '#1C2437',
+      marginBottom: 10,
+    },
+    noBeneficiaries: {
+      flex: 1,
+      backgroundColor: '#F1F3FB',
+    },
+    descriptionText: {
+      fontSize: 16,
+      color: dark ? '#686666' : '#464665',
+      textAlign: 'center',
+      marginHorizontal: 20,
+      marginBottom: 20,
+    },
+    beneficiaryContainer: {
+      borderRadius: 20,
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: 'white',
+      width: 77,
+      height: 86,
+      margin: 10,
+      padding: 50,
+    },
+    benImage: {
+      width: 77,
+      height: 86,
+      borderRadius: 20,
+      marginBottom: 20,
+    },
+    benName: {
+      position: 'absolute',
+      flex: 1,
+      bottom: 0,
+      color: dark ? '#afaeae' : '#1C2437',
+      paddingBottom: 10,
+      fontSize: 14,
+      fontWeight: '400',
+    },
+    newBeneficiary: {
+      flex: 1,
+      flexDirection: 'row',
+      flexWrap: 'wrap',
+    },
+  });
 
 export default Beneficiaries;

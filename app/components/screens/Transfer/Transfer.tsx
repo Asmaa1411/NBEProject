@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {StyleSheet, Text, View, TextInput} from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 import LogoBar from '../../atoms/LogoBar';
 import LoginButton from '../../atoms/LoginButton';
+import {ThemeContext} from '../../../../App';
 
 function Transfer({navigation}) {
   const [selectedTransferType, setSelectedTransferType] = React.useState();
@@ -10,6 +11,8 @@ function Transfer({navigation}) {
   const [selectedTransferTo, setSelectedTransferTo] = React.useState();
   const [amount, setAmount] = React.useState('');
   const [reason, setReason] = React.useState('');
+  const {dark} = useContext(ThemeContext);
+  const styles = getStyle(dark);
 
   return (
     <View style={styles.container}>
@@ -100,62 +103,63 @@ function Transfer({navigation}) {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'space-between',
-    padding: 16,
-    backgroundColor: '#F1F3FB',
-  },
-  title: {
-    fontSize: 18,
-    fontWeight: '800',
-    marginTop: 25,
-    marginBottom: 8,
-    color: '#1C2437',
-  },
-  inputWrapper: {
-    marginBottom: 8,
-    backgroundColor: '#fff',
-    borderRadius: 13,
-    borderColor: '#ccc',
-    borderWidth: 1,
-    paddingVertical: 1,
-    paddingHorizontal: 8,
-  },
-  input2: {
-    marginBottom: 16,
-    backgroundColor: '#fff',
-    borderRadius: 13,
-    borderColor: '#ccc',
-    borderWidth: 1,
-    paddingVertical: 2,
-    paddingBottom: 25,
-    paddingHorizontal: 8,
-  },
-  input3: {
-    marginBottom: 16,
-    marginTop: -7,
-    backgroundColor: '#fff',
-    borderRadius: 13,
-    borderColor: '#ccc',
-    borderWidth: 1,
-    paddingVertical: 15,
-    paddingHorizontal: 8,
-  },
-  input: {
-    fontSize: 18,
-    color: '#1C2437',
-    height: 40,
-    fontWeight: '500',
-  },
-  picker: {
-    height: 50,
-    marginTop: -25,
-  },
-  spacer: {
-    flex: 1,
-  },
-});
+const getStyle = (dark: any) =>
+  StyleSheet.create({
+    container: {
+      flex: 1,
+      justifyContent: 'space-between',
+      padding: 16,
+      backgroundColor: dark ? '#1f1e1e' : '#F1F3FB',
+    },
+    title: {
+      fontSize: 18,
+      fontWeight: '800',
+      marginTop: 25,
+      marginBottom: 8,
+      color: dark ? '#F1F3FB' : '#1C2437',
+    },
+    inputWrapper: {
+      marginBottom: 8,
+      backgroundColor: '#FFF',
+      borderRadius: 13,
+      borderColor: dark ? '#aca8a8' : '#ccc',
+      borderWidth: 1,
+      paddingVertical: 1,
+      paddingHorizontal: 8,
+    },
+    input2: {
+      marginBottom: 16,
+      backgroundColor: '#FFF',
+      borderRadius: 13,
+      borderColor: dark ? '#aca8a8' : '#ccc',
+      borderWidth: 1,
+      paddingVertical: 2,
+      paddingBottom: 25,
+      paddingHorizontal: 8,
+    },
+    input3: {
+      marginBottom: 16,
+      marginTop: -7,
+      backgroundColor: '#FFF',
+      borderRadius: 13,
+      borderColor: dark ? '#aca8a8' : '#ccc',
+      borderWidth: 1,
+      paddingVertical: 15,
+      paddingHorizontal: 8,
+    },
+    input: {
+      fontSize: 18,
+      color: '#1C2437',
+      height: 40,
+      fontWeight: '500',
+    },
+    picker: {
+      height: 50,
+      marginTop: -25,
+    },
+    spacer: {
+      flex: 1,
+    },
+  });
 
 export default Transfer;

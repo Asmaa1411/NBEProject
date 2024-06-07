@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, {useContext} from 'react';
 import {
   View,
@@ -13,9 +14,9 @@ import {ThemeContext} from '../../../../App';
 
 const Home = ({navigation}) => {
   const {dark} = useContext(ThemeContext);
+  const styles = getStyle(dark);
   return (
-    <View
-      style={[styles.container, {backgroundColor: dark ? 'black' : 'white'}]}>
+    <View style={styles.container}>
       <TopBar navigation={navigation} onNotificationPress={() => {}} />
       <TouchableOpacity onPress={() => navigation.navigate('SecondHome')}>
         <Image
@@ -125,110 +126,112 @@ const Home = ({navigation}) => {
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingHorizontal: 10,
-  },
-  innerContainer: {
-    paddingHorizontal: 10,
-  },
-  accountImage: {
-    width: '100%',
-    marginBottom: 20,
-    marginTop: 8,
-  },
-  squareContainer: {
-    flexDirection: 'row',
-    gap: 25,
-    justifyContent: 'space-between',
-  },
-  square: {
-    width: 70,
-    aspectRatio: 1, // to make it square
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 10,
-  },
-  icon: {
-    width: 28,
-    height: 28,
-  },
-  title: {
-    textAlign: 'center',
-    fontSize: 14,
-    fontWeight: '400',
-    fontFamily: 'Roboto',
-    color: '#1C2437',
-    marginBottom: 10,
-  },
-  scrollTitle: {
-    fontSize: 20,
-    marginBottom: 10,
-    color: '#1C2437',
-    fontFamily: 'Roboto-Bold',
-  },
+const getStyle = (dark: any) =>
+  StyleSheet.create({
+    container: {
+      flex: 1,
+      paddingHorizontal: 10,
+      backgroundColor: dark ? '#1f1e1e' : '#F1F3FB',
+    },
+    innerContainer: {
+      paddingHorizontal: 10,
+    },
+    accountImage: {
+      width: '100%',
+      marginBottom: 20,
+      marginTop: 8,
+    },
+    squareContainer: {
+      flexDirection: 'row',
+      gap: 25,
+      justifyContent: 'space-between',
+    },
+    square: {
+      width: 70,
+      aspectRatio: 1, // to make it square
+      justifyContent: 'center',
+      alignItems: 'center',
+      borderRadius: 10,
+    },
+    icon: {
+      width: 28,
+      height: 28,
+    },
+    title: {
+      textAlign: 'center',
+      fontSize: 14,
+      fontWeight: '400',
+      fontFamily: 'Roboto',
+      color: dark ? '#afaeae' : '#1C2437',
+      marginBottom: 10,
+    },
+    scrollTitle: {
+      fontSize: 20,
+      marginBottom: 10,
+      color: dark ? '#afaeae' : '#1C2437',
+      fontFamily: 'Roboto-Bold',
+    },
 
-  send: {
-    width: 85,
-    height: 90,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 10,
-    marginRight: 10,
-  },
-  buttonImage: {
-    width: '100%',
-    height: '100%',
-    resizeMode: 'contain',
-  },
-  buttonText: {
-    fontSize: 14,
-    fontFamily: 'Roboto-Regular',
-    color: '#1C2437',
-    marginTop: -20,
-  },
-  historyRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 10,
-  },
-  historyImage: {
-    marginRight: 6,
-  },
-  historyContent: {
-    flex: 1,
-    justifyContent: 'center',
-  },
-  historySubTitle: {
-    fontSize: 18,
-    fontFamily: 'Roboto-Regular',
-    color: '#1C2437',
-    marginBottom: 5,
-  },
-  historyDate: {
-    color: '#1C2437',
-    opacity: 0.5,
-    fontSize: 14,
-    fontFamily: 'Roboto-Regular',
-  },
-  horizontalScrollView: {
-    marginBottom: 10,
-  },
-  verticalScrollView: {
-    maxHeight: 185,
-  },
-  historyPrice: {
-    fontSize: 18,
-    fontFamily: 'Roboto-Bold',
-    color: '#1C2437',
-  },
-  separator: {
-    height: 1,
-    backgroundColor: '#B7B7B7',
-    opacity: 0.5,
-    marginVertical: 3,
-  },
-});
+    send: {
+      width: 85,
+      height: 90,
+      justifyContent: 'center',
+      alignItems: 'center',
+      borderRadius: 10,
+      marginRight: 10,
+    },
+    buttonImage: {
+      width: '100%',
+      height: '100%',
+      resizeMode: 'contain',
+    },
+    buttonText: {
+      fontSize: 14,
+      fontFamily: 'Roboto-Regular',
+      color: dark ? '#afaeae' : '#1C2437',
+      marginTop: -20,
+    },
+    historyRow: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      marginBottom: 10,
+    },
+    historyImage: {
+      marginRight: 6,
+    },
+    historyContent: {
+      flex: 1,
+      justifyContent: 'center',
+    },
+    historySubTitle: {
+      fontSize: 18,
+      fontFamily: 'Roboto-Regular',
+      color: dark ? '#afaeae' : '#1C2437',
+      marginBottom: 5,
+    },
+    historyDate: {
+      color: dark ? '#afaeae' : '#1C2437',
+      opacity: 0.5,
+      fontSize: 14,
+      fontFamily: 'Roboto-Regular',
+    },
+    horizontalScrollView: {
+      marginBottom: 10,
+    },
+    verticalScrollView: {
+      maxHeight: 185,
+    },
+    historyPrice: {
+      fontSize: 18,
+      fontFamily: 'Roboto-Bold',
+      color: dark ? '#afaeae' : '#1C2437',
+    },
+    separator: {
+      height: 1,
+      backgroundColor: '#B7B7B7',
+      opacity: 0.5,
+      marginVertical: 3,
+    },
+  });
 
 export default Home;

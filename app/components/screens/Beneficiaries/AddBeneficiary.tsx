@@ -1,12 +1,15 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {StyleSheet, View, Image, TouchableOpacity} from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 import LogoBar from '../../atoms/LogoBar';
 import LoginButton from '../../atoms/LoginButton';
 import {launchImageLibrary} from 'react-native-image-picker';
 import LabeledTextInput from '../../atoms/LabeledTextInput';
+import {ThemeContext} from '../../../../App';
 
 function AddBeneficiary({navigation}) {
+  const {dark} = useContext(ThemeContext);
+  const styles = getStyle(dark);
   const [selectedTransferType, setSelectedTransferType] = React.useState();
   const [firstName, setFirstName] = React.useState('');
   const [lastName, setLastName] = React.useState('');
@@ -112,76 +115,77 @@ function AddBeneficiary({navigation}) {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'space-between',
-    padding: 16,
-    backgroundColor: '#F1F3FB',
-  },
-  imagePickerContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: 20,
-  },
-  imagePicker: {
-    backgroundColor: '#fff',
-    borderRadius: 13,
-    borderColor: '#ccc',
-    borderWidth: 1,
-    height: 150,
-    width: 150,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  cameraIcon: {
-    width: 50,
-    height: 50,
-    tintColor: '#007236',
-  },
-  image: {
-    width: '100%',
-    height: '100%',
-    borderRadius: 13,
-  },
-  nameContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginBottom: 8,
-    width: '100%',
-  },
-  inputWrapper: {
-    marginBottom: 8,
-    backgroundColor: '#fff',
-    borderRadius: 13,
-    borderColor: '#ccc',
-    borderWidth: 1,
-    paddingVertical: 1,
-    paddingHorizontal: 8,
-  },
-  picker: {
-    height: 50,
-    marginTop: -25,
-  },
-  spacer: {
-    flex: 1,
-  },
-  namesInput: {
-    width: 175,
-    backgroundColor: '#fff',
-    borderRadius: 13,
-    borderColor: '#ccc',
-    borderWidth: 1,
-    paddingHorizontal: 8,
-    fontSize: 18,
-    color: '#1C2437',
-    height: 60,
-    fontWeight: '500',
-    paddingTop: 20,
-  },
-  pickerStyle: {
-    paddingBottom: 5,
-  },
-});
+const getStyle = (dark: any) =>
+  StyleSheet.create({
+    container: {
+      flex: 1,
+      justifyContent: 'space-between',
+      padding: 16,
+      backgroundColor: dark ? '#1f1e1e' : '#F1F3FB',
+    },
+    imagePickerContainer: {
+      justifyContent: 'center',
+      alignItems: 'center',
+      marginBottom: 20,
+    },
+    imagePicker: {
+      backgroundColor: '#fff',
+      borderRadius: 13,
+      borderColor: '#ccc',
+      borderWidth: 1,
+      height: 150,
+      width: 150,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    cameraIcon: {
+      width: 50,
+      height: 50,
+      tintColor: '#007236',
+    },
+    image: {
+      width: '100%',
+      height: '100%',
+      borderRadius: 13,
+    },
+    nameContainer: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      marginBottom: 8,
+      width: '100%',
+    },
+    inputWrapper: {
+      marginBottom: 8,
+      backgroundColor: '#fff',
+      borderRadius: 13,
+      borderColor: '#ccc',
+      borderWidth: 1,
+      paddingVertical: 1,
+      paddingHorizontal: 8,
+    },
+    picker: {
+      height: 50,
+      marginTop: -25,
+    },
+    spacer: {
+      flex: 1,
+    },
+    namesInput: {
+      width: 175,
+      backgroundColor: '#fff',
+      borderRadius: 13,
+      borderColor: '#ccc',
+      borderWidth: 1,
+      paddingHorizontal: 8,
+      fontSize: 18,
+      color: '#1C2437',
+      height: 60,
+      fontWeight: '500',
+      paddingTop: 20,
+    },
+    pickerStyle: {
+      paddingBottom: 5,
+    },
+  });
 
 export default AddBeneficiary;

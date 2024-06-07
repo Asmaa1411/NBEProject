@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React from 'react';
+import React, {useContext} from 'react';
 import {
   View,
   Image,
@@ -11,10 +11,12 @@ import {
 import TopBar from '../../atoms/TopBar';
 import {historyData} from './historyData';
 import {green} from 'react-native-reanimated/lib/typescript/reanimated2/Colors';
+import {ThemeContext} from '../../../../App';
 // import {useTheme} from '@react-navigation/native';
 
 const SecondHome = ({navigation}) => {
-  // const {colors} = useTheme();
+  const {dark} = useContext(ThemeContext);
+  const styles = getStyle(dark);
 
   return (
     <View style={styles.container}>
@@ -107,145 +109,146 @@ const SecondHome = ({navigation}) => {
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingHorizontal: 10,
-    backgroundColor: '#F1F3FB',
-  },
-  scrollTitle: {
-    fontSize: 20,
-    marginBottom: 10,
-    color: '#1C2437',
-    fontFamily: 'Roboto-Bold',
-  },
-  horizontalScrollView: {
-    marginBottom: -300,
-  },
-  imageContainer: {
-    marginRight: 10,
-  },
-  imageWrapper: {
-    position: 'relative',
-  },
-  accountImage: {
-    width: 300,
-    height: 200,
-    borderRadius: 10,
-  },
-  historyRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 10,
-  },
-  historyImage: {
-    marginRight: 6,
-  },
-  historyContent: {
-    flex: 1,
-    justifyContent: 'center',
-  },
-  historySubTitle: {
-    fontSize: 18,
-    color: '#1C2437',
-    marginBottom: 5,
-    fontFamily: 'Roboto-Regular',
-  },
-  historyDate: {
-    color: '#1C2437',
-    opacity: 0.5,
-    fontSize: 14,
-    fontFamily: 'Roboto-Regular',
-  },
-  historyPrice: {
-    fontSize: 18,
-    fontFamily: 'Roboto-Bold',
-    color: '#1C2437',
-  },
-  separator: {
-    height: 1,
-    backgroundColor: '#B7B7B7',
-    opacity: 0.5,
-    marginVertical: 3,
-  },
-  verticalScrollView: {
-    flex: 1,
-  },
-  colorOverlay: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    bottom: 0,
-    right: 0,
-    backgroundColor: '#00563B',
-    borderRadius: 10,
-    opacity: 0.5,
-  },
+const getStyle = (dark: any) =>
+  StyleSheet.create({
+    container: {
+      flex: 1,
+      paddingHorizontal: 10,
+      backgroundColor: dark ? '#1f1e1e' : '#F1F3FB',
+    },
+    scrollTitle: {
+      fontSize: 20,
+      marginBottom: 10,
+      color: dark ? '#afaeae' : '#1C2437',
+      fontFamily: 'Roboto-Bold',
+    },
+    horizontalScrollView: {
+      marginBottom: -300,
+    },
+    imageContainer: {
+      marginRight: 10,
+    },
+    imageWrapper: {
+      position: 'relative',
+    },
+    accountImage: {
+      width: 300,
+      height: 200,
+      borderRadius: 10,
+    },
+    historyRow: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      marginBottom: 10,
+    },
+    historyImage: {
+      marginRight: 6,
+    },
+    historyContent: {
+      flex: 1,
+      justifyContent: 'center',
+    },
+    historySubTitle: {
+      fontSize: 18,
+      color: dark ? '#afaeae' : '#1C2437',
+      marginBottom: 5,
+      fontFamily: 'Roboto-Regular',
+    },
+    historyDate: {
+      color: dark ? '#afaeae' : '#1C2437',
+      opacity: 0.5,
+      fontSize: 14,
+      fontFamily: 'Roboto-Regular',
+    },
+    historyPrice: {
+      fontSize: 18,
+      fontFamily: 'Roboto-Bold',
+      color: dark ? '#afaeae' : '#1C2437',
+    },
+    separator: {
+      height: 1,
+      backgroundColor: '#B7B7B7',
+      opacity: 0.5,
+      marginVertical: 3,
+    },
+    verticalScrollView: {
+      flex: 1,
+    },
+    colorOverlay: {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      bottom: 0,
+      right: 0,
+      backgroundColor: '#00563B',
+      borderRadius: 10,
+      opacity: 0.5,
+    },
 
-  cardDetails: {
-    position: 'absolute',
-    bottom: 50,
-    left: 10,
-    right: 10,
-  },
-  cardBalance: {
-    color: '#FFFFFF',
-    fontSize: 25,
-    marginBottom: 40,
-    fontFamily: 'GemunuLibre-Bold',
-  },
-  cardNumber: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    fontFamily: 'GemunuLibre-Regular',
-  },
-  cardNumberSegment: {
-    color: '#FFFFFF',
-    fontSize: 25,
-    fontFamily: 'GemunuLibre-Regular',
-  },
-  cardTextContainer: {
-    flexDirection: 'row',
-    marginTop: 10,
-    justifyContent: 'space-between',
-    gap: 80,
-    marginBottom: -30,
-    paddingTop: 20,
-  },
-  cardTextColumn: {
-    flex: 1,
-    width: 200,
-  },
-  cardTextTitle: {
-    color: '#848484',
-    fontSize: 14,
-    width: 150,
-    fontFamily: 'GemunuLibre-Bold',
-  },
-  cardText: {
-    color: '#FFFFFF',
-    fontSize: 14,
-    fontFamily: 'GemunuLibre-Bold',
-    width: 150,
-  },
-  iconTopRight: {
-    position: 'absolute',
-    top: 10,
-    right: 10,
-  },
-  iconNextToNumber: {
-    flexDirection: 'row',
-    width: 40,
-    position: 'absolute',
-    right: 30,
-  },
-  iconNextToNumber2: {
-    height: 20,
-    position: 'absolute',
-    top: 3,
-    left: 50,
-  },
-});
+    cardDetails: {
+      position: 'absolute',
+      bottom: 50,
+      left: 10,
+      right: 10,
+    },
+    cardBalance: {
+      color: '#FFFFFF',
+      fontSize: 25,
+      marginBottom: 40,
+      fontFamily: 'GemunuLibre-Bold',
+    },
+    cardNumber: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      fontFamily: 'GemunuLibre-Regular',
+    },
+    cardNumberSegment: {
+      color: '#FFFFFF',
+      fontSize: 25,
+      fontFamily: 'GemunuLibre-Regular',
+    },
+    cardTextContainer: {
+      flexDirection: 'row',
+      marginTop: 10,
+      justifyContent: 'space-between',
+      gap: 80,
+      marginBottom: -30,
+      paddingTop: 20,
+    },
+    cardTextColumn: {
+      flex: 1,
+      width: 200,
+    },
+    cardTextTitle: {
+      color: '#848484',
+      fontSize: 14,
+      width: 150,
+      fontFamily: 'GemunuLibre-Bold',
+    },
+    cardText: {
+      color: '#FFFFFF',
+      fontSize: 14,
+      fontFamily: 'GemunuLibre-Bold',
+      width: 150,
+    },
+    iconTopRight: {
+      position: 'absolute',
+      top: 10,
+      right: 10,
+    },
+    iconNextToNumber: {
+      flexDirection: 'row',
+      width: 40,
+      position: 'absolute',
+      right: 30,
+    },
+    iconNextToNumber2: {
+      height: 20,
+      position: 'absolute',
+      top: 3,
+      left: 50,
+    },
+  });
 
 export default SecondHome;
