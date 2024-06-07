@@ -1,10 +1,13 @@
 /* eslint-disable comma-dangle */
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {StyleSheet, Text, View, TextInput} from 'react-native';
 import LogoBar from '../../atoms/LogoBar';
 import LoginButton from '../../atoms/LoginButton';
+import {ThemeContext} from '../../../../App';
 
 function SetPassward({navigation}) {
+  const {dark} = useContext(ThemeContext);
+  const styles = getStyle(dark);
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [passwordValidations, setPasswordValidations] = useState({
@@ -119,68 +122,69 @@ function SetPassward({navigation}) {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'space-between',
-    padding: 16,
-    paddingTop: 40,
-    backgroundColor: '#F1F3FB',
-  },
-  title: {
-    fontSize: 18,
-    fontWeight: '800',
-    marginTop: 25,
-    marginBottom: 8,
-    color: '#1C2437',
-  },
-  fieldsContainer: {
-    marginBottom: 20,
-  },
-  helperText: {
-    color: '#B7B7B7',
-    fontSize: 16,
-    marginBottom: 40,
-  },
-  spacer: {
-    flex: 1,
-  },
-  inputWrapper: {
-    marginVertical: 10,
-    backgroundColor: '#fff',
-    borderRadius: 13,
-    borderColor: '#ccc',
-    borderWidth: 1,
-    paddingHorizontal: 12,
-    paddingVertical: 8,
-  },
-  staticText: {
-    color: '#007236',
-    fontSize: 16,
-    fontWeight: 'bold',
-    marginBottom: 5,
-  },
-  input: {
-    fontSize: 16,
-    color: '#1C2437',
-    paddingVertical: 10,
-  },
-  validationContainer: {
-    marginTop: 20,
-  },
-  validationText: {
-    fontSize: 14,
-    color: '#B7B7B7',
-    marginTop: 5,
-  },
-  valid: {
-    color: 'green',
-  },
-  validationRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-});
+const getStyle = (dark: any) =>
+  StyleSheet.create({
+    container: {
+      flex: 1,
+      justifyContent: 'space-between',
+      padding: 16,
+      paddingTop: 40,
+      backgroundColor: dark ? '#1f1e1e' : '#F1F3FB',
+    },
+    title: {
+      fontSize: 18,
+      fontWeight: '800',
+      marginTop: 25,
+      marginBottom: 8,
+      color: dark ? '#afaeae' : '#1C2437',
+    },
+    fieldsContainer: {
+      marginBottom: 20,
+    },
+    helperText: {
+      color: '#B7B7B7',
+      fontSize: 16,
+      marginBottom: 5,
+    },
+    spacer: {
+      flex: 1,
+    },
+    inputWrapper: {
+      marginVertical: 10,
+      backgroundColor: '#fff',
+      borderRadius: 13,
+      borderColor: '#ccc',
+      borderWidth: 1,
+      paddingHorizontal: 12,
+      paddingVertical: 8,
+    },
+    staticText: {
+      color: '#007236',
+      fontSize: 16,
+      fontWeight: 'bold',
+      marginBottom: 5,
+    },
+    input: {
+      fontSize: 16,
+      color: '#1C2437',
+      paddingVertical: 10,
+    },
+    validationContainer: {
+      marginTop: 20,
+    },
+    validationText: {
+      fontSize: 14,
+      color: '#B7B7B7',
+      marginTop: 5,
+    },
+    valid: {
+      color: 'green',
+    },
+    validationRow: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+    },
+  });
 
 export default SetPassward;

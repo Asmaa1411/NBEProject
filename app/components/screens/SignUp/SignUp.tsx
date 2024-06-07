@@ -1,13 +1,16 @@
-import React, {useState} from 'react';
-import {View, Text, Alert} from 'react-native';
+import React, {useContext, useState} from 'react';
+import {View, Text, Alert, StyleSheet} from 'react-native';
 import {Formik} from 'formik';
 import * as Yup from 'yup';
 import LoginButton from '../../atoms/LoginButton';
 import LogoBar from '../../atoms/LogoBar';
 import Label from '../../atoms/Label'; // استيراد الـ Label atom
 import styles from './SignUp.style';
+import {ThemeContext} from '../../../../App';
 
 const SignUpScreen = ({navigation}) => {
+  const {dark} = useContext(ThemeContext);
+  const styles = getStyle(dark);
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleNextPress = values => {
@@ -86,5 +89,52 @@ const SignUpScreen = ({navigation}) => {
     </View>
   );
 };
+
+const getStyle = (dark: any) =>
+  StyleSheet.create({
+    container: {
+      flex: 1,
+      justifyContent: 'space-between',
+      paddingHorizontal: 16,
+      paddingVertical: 16,
+      backgroundColor: dark ? '#1f1e1e' : '#F1F3FB',
+    },
+    topContainer: {
+      width: '100%',
+      marginBottom: 20,
+    },
+    titleText: {
+      fontSize: 20,
+      fontWeight: 'bold',
+      color: dark ? '#afaeae' : '#1C2437',
+      marginTop: 20,
+      textAlign: 'left',
+    },
+    subtitleText: {
+      fontSize: 14,
+      color: '#B7B7B7',
+      marginTop: 1,
+      textAlign: 'left',
+      marginBottom: 25,
+    },
+
+    input: {
+      fontSize: 16,
+      color: '#1C2437',
+      paddingVertical: 10,
+    },
+    errorText: {
+      color: 'red',
+      fontSize: 14,
+      marginTop: 5,
+    },
+    termsText: {
+      color: dark ? '#B7B7B7' : '#1C2437',
+    },
+    boldText: {
+      color: dark ? '#5c5b5b' : '#1C2437',
+      fontWeight: '900',
+    },
+  });
 
 export default SignUpScreen;

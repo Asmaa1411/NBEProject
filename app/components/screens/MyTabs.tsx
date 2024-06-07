@@ -115,6 +115,8 @@ const Drawer = createDrawerNavigator();
 
 function CustomDrawerContent(props) {
   const navigation = useNavigation();
+  const {dark} = useContext(ThemeContext);
+  const styles = getStyle(dark);
 
   return (
     <DrawerContentScrollView {...props} style={styles.container}>
@@ -122,37 +124,49 @@ function CustomDrawerContent(props) {
         <View style={styles.row}>
           <Image source={require('../assets/logoTransfer.png')} />
         </View>
+        <TouchableOpacity style={[styles.button]}>
+          <Text style={styles.buttonText}>{'AR'}</Text>
+        </TouchableOpacity>
       </View>
       <View style={styles.row}>
-        <Image source={require('../assets/account.png')} />
+        <Image source={require('../assets/drawer1.png')} />
+        <Text style={styles.text}>Accounts Summary</Text>
       </View>
       <View style={styles.row}>
-        <Image source={require('../assets/open.png')} />
+        <Image source={require('../assets/drawer2.png')} />
+        <Text style={styles.text}>Open Certificates & Deposits</Text>
       </View>
       <View style={styles.row}>
-        <Image source={require('../assets/payment.png')} />
+        <Image source={require('../assets/drawer3.png')} />
+        <Text style={styles.text}>Payement Services</Text>
       </View>
       <View style={styles.row}>
-        <Image source={require('../assets/cardss.png')} />
+        <Image source={require('../assets/drawer4.png')} />
+        <Text style={styles.text}>Cards Services</Text>
       </View>
       <View style={styles.row}>
-        <Image source={require('../assets/hard.png')} />
+        <Image source={require('../assets/drawer5.png')} />
+        <Text style={styles.text}>Hard Token</Text>
       </View>
       <View style={styles.row}>
-        <Image source={require('../assets/offers.png')} />
+        <Image source={require('../assets/drawer6.png')} />
+        <Text style={styles.text}>Offers</Text>
       </View>
       <View style={styles.row}>
-        <Image source={require('../assets/calculators.png')} />
+        <Image source={require('../assets/drawer7.png')} />
+        <Text style={styles.text}>Calculators</Text>
       </View>
       <View style={styles.row}>
-        <Image source={require('../assets/dark.png')} />
+        <Image source={require('../assets/drawer8.png')} />
+        <Text style={styles.text}>Dark Mode</Text>
         {/* <Switch value={dark} onChange={() => setDark(!dark)} /> */}
       </View>
       <View style={styles.row}>
         <TouchableOpacity
-          style={styles.row}
+          style={styles.row2}
           onPress={() => navigation.navigate('LoginScreen')}>
-          <Image source={require('../assets/logout.png')} />
+          <Image source={require('../assets/drawer9.png')} />
+          <Text style={styles.text2}>Logout</Text>
         </TouchableOpacity>
       </View>
       <TouchableOpacity style={styles.beneficiaryInfoContainer}>
@@ -228,7 +242,6 @@ function MyTabs() {
     </Tab.Navigator>
   );
 }
-
 const styles = StyleSheet.create({
   tabBar: {
     flexDirection: 'row',
@@ -244,60 +257,83 @@ const styles = StyleSheet.create({
     margin: 5,
     borderRadius: 10,
   },
-  icon: {},
-  logoButtonContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginTop: 30,
-  },
-  backButtonContainer: {
-    backgroundColor: '#007236',
-    width: 40,
-    height: 40,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 10,
-  },
-  beneficiaryInfoContainer: {
-    flexDirection: 'row',
-    backgroundColor: 'white',
-    padding: 16,
-    marginHorizontal: 16,
-    borderRadius: 10,
-    alignItems: 'center',
-  },
-  benImage: {
-    width: 50,
-    height: 50,
-    borderRadius: 25,
-    marginRight: 16,
-  },
-  beneficiaryDetails: {
-    flex: 1,
-  },
-  benName: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#1C2437',
-  },
-  container: {
-    backgroundColor: '#F1F3FB',
-    width: 330,
-    borderTopRightRadius: 50,
-    borderBottomRightRadius: 50,
-  },
-  row: {
-    paddingBottom: 15,
-    paddingLeft: 15,
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  logoutText: {
-    marginLeft: 10,
-    fontSize: 16,
-    color: '#000',
-  },
 });
+
+const getStyle = (dark: any) =>
+  StyleSheet.create({
+    container: {
+      backgroundColor: dark ? '#444343' : '#F1F3FB',
+      width: 330,
+      borderTopRightRadius: 50,
+      borderBottomRightRadius: 50,
+    },
+    row: {
+      paddingBottom: 20,
+      paddingLeft: 15,
+      flexDirection: 'row',
+      alignItems: 'center',
+    },
+    row2: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      paddingBottom: 28,
+    },
+    text: {
+      fontSize: 18,
+      marginLeft: 10,
+      fontFamily: 'Roboto-Bold',
+      color: dark ? '#c7c5c5' : '#1C2437',
+    },
+    text2: {
+      fontSize: 18,
+      marginLeft: 10,
+      fontFamily: 'Roboto-Bold',
+      color: '#EB001B',
+    },
+
+    icon: {},
+    logoButtonContainer: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      marginTop: 30,
+    },
+    beneficiaryInfoContainer: {
+      flexDirection: 'row',
+      backgroundColor: dark ? '#b9b6b6' : '#f8f8fa',
+      padding: 16,
+      marginHorizontal: 16,
+      borderRadius: 10,
+      alignItems: 'center',
+    },
+    benImage: {
+      width: 50,
+      height: 50,
+      borderRadius: 25,
+      marginRight: 16,
+    },
+    beneficiaryDetails: {
+      flex: 1,
+    },
+    benName: {
+      fontSize: 18,
+      fontWeight: 'bold',
+      color: '#1C2437',
+    },
+    button: {
+      width: 40,
+      height: 40,
+      justifyContent: 'center',
+      alignItems: 'center',
+      borderRadius: 10,
+      backgroundColor: dark ? '#b4b3b3' : '#F1F3FB',
+      marginRight: 15,
+      marginBottom: 8,
+    },
+    buttonText: {
+      color: ' #007236',
+      fontWeight: 'bold',
+    },
+  });
 
 export default MyTabs;

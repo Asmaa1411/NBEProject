@@ -26,7 +26,7 @@ export const ThemeContext = createContext(null);
 const Stack = createNativeStackNavigator();
 
 function App() {
-  const [dark, setDark] = useState(false);
+  const [dark, setDark] = useState(true);
 
   return (
     <ThemeContext.Provider value={{dark, setDark}}>
