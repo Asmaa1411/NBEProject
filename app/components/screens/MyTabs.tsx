@@ -1,7 +1,14 @@
-/* eslint-disable react/no-unstable-nested-components */
-import React, {useContext, useState} from 'react';
+import React, {useContext} from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {Image, TouchableOpacity, View, StyleSheet, Text} from 'react-native';
+import {
+  Image,
+  TouchableOpacity,
+  View,
+  StyleSheet,
+  Text,
+  Switch,
+} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 import Home from './Home/Home';
 import Transfer from './Transfer/Transfer';
 import Beneficiaries from './Beneficiaries/Beneficiaries';
@@ -16,15 +23,12 @@ import atmsIcon from '../assets/atmsIqon.png';
 import airpayIcon from '../assets/airPayIcon.png';
 import {
   DrawerContentScrollView,
-  DrawerItem,
   createDrawerNavigator,
 } from '@react-navigation/drawer';
 import SecondHome from './Home/SecondHome';
 import BeneficiaryHistory from './Beneficiaries/BeneficiaryHistory';
-import Logo from '../atoms/Logo';
-import SquareButton from '../atoms/SquareButton';
-import {Switch} from 'react-native-gesture-handler';
 import {ThemeContext} from '../../../App';
+import LoginScreen from './LoginScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -47,7 +51,6 @@ const getTabBarIcon = routeName => {
 
 const MyTabBar = ({state, descriptors, navigation}) => {
   const {dark} = useContext(ThemeContext);
-  console.log(dark, 'fwefwfwef');
   return (
     <View
       style={[styles.tabBar, {backgroundColor: dark ? '#1f1e1e' : '#F1F3FB'}]}>
@@ -110,133 +113,72 @@ const MyTabBar = ({state, descriptors, navigation}) => {
 
 const Drawer = createDrawerNavigator();
 
+function CustomDrawerContent(props) {
+  const navigation = useNavigation();
+
+  return (
+    <DrawerContentScrollView {...props} style={styles.container}>
+      <View style={styles.logoButtonContainer}>
+        <View style={styles.row}>
+          <Image source={require('../assets/logoTransfer.png')} />
+        </View>
+      </View>
+      <View style={styles.row}>
+        <Image source={require('../assets/account.png')} />
+      </View>
+      <View style={styles.row}>
+        <Image source={require('../assets/open.png')} />
+      </View>
+      <View style={styles.row}>
+        <Image source={require('../assets/payment.png')} />
+      </View>
+      <View style={styles.row}>
+        <Image source={require('../assets/cardss.png')} />
+      </View>
+      <View style={styles.row}>
+        <Image source={require('../assets/hard.png')} />
+      </View>
+      <View style={styles.row}>
+        <Image source={require('../assets/offers.png')} />
+      </View>
+      <View style={styles.row}>
+        <Image source={require('../assets/calculators.png')} />
+      </View>
+      <View style={styles.row}>
+        <Image source={require('../assets/dark.png')} />
+        {/* <Switch value={dark} onChange={() => setDark(!dark)} /> */}
+      </View>
+      <View style={styles.row}>
+        <TouchableOpacity
+          style={styles.row}
+          onPress={() => navigation.navigate('LoginScreen')}>
+          <Image source={require('../assets/logout.png')} />
+        </TouchableOpacity>
+      </View>
+      <TouchableOpacity style={styles.beneficiaryInfoContainer}>
+        <Image source={require('../assets/hala.png')} style={styles.benImage} />
+        <View style={styles.beneficiaryDetails}>
+          <Text style={styles.benName}>Asmaa Saad</Text>
+          <Text style={styles.benName}>+ 01025874963</Text>
+        </View>
+      </TouchableOpacity>
+    </DrawerContentScrollView>
+  );
+}
+
 function DrawerNavigator() {
   return (
     <Drawer.Navigator
       initialRouteName="Home"
-      drawerContent={props => {
-        const {routeNames, index} = props.state;
-        const focused = routeNames[index];
-        console.log('focused', focused);
-        return (
-          <DrawerContentScrollView {...props}>
-            <View style={styles.logoButtonContainer}>
-              <View>
-                <Image source={require('../assets/logoTransfer.png')} />
-              </View>
-              {/* زرار AR  */}
-            </View>
-            <View style={styles.row}>
-              <Image source={require('../assets/drawer1.png')} />
-              <DrawerItem
-                label="Account Summary"
-                onPress={() => {}}
-                activeBackgroundColor="#007236"
-                inactiveBackgroundColor="#FFF"
-                inactiveTintColor="#000000"
-                activeTintColor="#FFF"
-              />
-            </View>
-            <View style={styles.row}>
-              <Image source={require('../assets/drawer1.png')} />
-              <DrawerItem
-                label="Open Certificates & Deposits"
-                onPress={() => {}}
-                activeBackgroundColor="#007236"
-                inactiveBackgroundColor="#FFF"
-                inactiveTintColor="#000000"
-                activeTintColor="#FFF"
-              />
-            </View>
-            <View style={styles.row}>
-              <Image source={require('../assets/drawer1.png')} />
-              <DrawerItem
-                label="Payement Services"
-                activeBackgroundColor="#007236"
-                inactiveBackgroundColor="#FFF"
-                inactiveTintColor="#000000"
-                activeTintColor="#FFF"
-              />
-            </View>
-            <View style={styles.row}>
-              <Image source={require('../assets/drawer1.png')} />
-              <DrawerItem
-                label="Cards Services"
-                onPress={() => {}}
-                activeBackgroundColor="#007236"
-                inactiveBackgroundColor="#FFF"
-                inactiveTintColor="#000000"
-                activeTintColor="#FFF"
-              />
-            </View>
-            <View style={styles.row}>
-              <Image source={require('../assets/drawer1.png')} />
-              <DrawerItem
-                label="Hard Token"
-                onPress={() => {}}
-                activeBackgroundColor="#007236"
-                inactiveBackgroundColor="#FFF"
-                inactiveTintColor="#000000"
-                activeTintColor="#FFF"
-              />
-            </View>
-            <View style={styles.row}>
-              <Image source={require('../assets/drawer1.png')} />
-              <DrawerItem
-                label="Offers"
-                onPress={() => {}}
-                activeBackgroundColor="#007236"
-                inactiveBackgroundColor="#FFF"
-                inactiveTintColor="#000000"
-                activeTintColor="#FFF"
-              />
-            </View>
-            <View style={styles.row}>
-              <Image source={require('../assets/drawer1.png')} />
-              <DrawerItem
-                label="Customer Services"
-                onPress={() => {}}
-                activeBackgroundColor="#007236"
-                inactiveBackgroundColor="#FFF"
-                inactiveTintColor="#000000"
-                activeTintColor="#FFF"
-              />
-            </View>
-            <View style={styles.row}>
-              <Image source={require('../assets/drawer1.png')} />
-              <DrawerItem
-                label="Calculators"
-                onPress={() => {}}
-                activeBackgroundColor="#007236"
-                inactiveBackgroundColor="#FFF"
-                inactiveTintColor="#000000"
-                activeTintColor="#FFF"
-              />
-            </View>
-            <View style={styles.row}>
-              <Image source={require('../assets/drawer1.png')} />
-              <DrawerItem
-                label="Dark Mode"
-                onPress={() => {}}
-                activeBackgroundColor="#007236"
-                inactiveBackgroundColor="#FFF"
-                inactiveTintColor="#000000"
-                activeTintColor="#FFF"
-              />
-              {/* <Switch value={dark} onChange={() => setDark(!dark)} /> */}
-            </View>
-            <TouchableOpacity style={styles.beneficiaryInfoContainer}>
-              <Image
-                source={require('../assets/hala.png')}
-                style={styles.benImage}
-              />
-              <View style={styles.beneficiaryDetails}>
-                <Text style={styles.benName}>Asmaa Saad</Text>
-                <Text style={styles.benDetail}>+ 01025874963</Text>
-              </View>
-            </TouchableOpacity>
-          </DrawerContentScrollView>
-        );
+      drawerContent={props => <CustomDrawerContent {...props} />}
+      screenOptions={{
+        drawerStyle: {
+          width: 330,
+          borderTopRightRadius: 50,
+          borderBottomRightRadius: 50,
+          // يمكنك إضافة المزيد من الأنماط هنا حسب الحاجة
+        },
+        drawerType: 'front',
       }}>
       <Drawer.Screen
         name="Home1"
@@ -255,7 +197,6 @@ function DrawerNavigator() {
         component={BeneficiaryHistory}
         options={{headerShown: false}}
       />
-      {/* Add other drawer screens here */}
     </Drawer.Navigator>
   );
 }
@@ -268,7 +209,6 @@ function MyTabs() {
         component={DrawerNavigator}
         options={{headerShown: false}}
       />
-      {/* <Tab.Screen name="Home" component={Home} options={{headerShown: false}} /> */}
       <Tab.Screen
         name="Transfer"
         component={Transfer}
@@ -341,7 +281,23 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#1C2437',
   },
-  row: {},
+  container: {
+    backgroundColor: '#F1F3FB',
+    width: 330,
+    borderTopRightRadius: 50,
+    borderBottomRightRadius: 50,
+  },
+  row: {
+    paddingBottom: 15,
+    paddingLeft: 15,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  logoutText: {
+    marginLeft: 10,
+    fontSize: 16,
+    color: '#000',
+  },
 });
 
 export default MyTabs;
