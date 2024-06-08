@@ -194,7 +194,7 @@ const getStyle = (dark: any) =>
       marginTop: 5,
     },
     valid: {
-      color: '#000000',
+      color: dark ? '#befac1' : '#000000',
     },
     validationRow: {
       flexDirection: 'row',

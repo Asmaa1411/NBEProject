@@ -14,8 +14,6 @@ import Transfer from './Transfer/Transfer';
 import Beneficiaries from './Beneficiaries/Beneficiaries';
 import ATMs from './ATMs/ATMs';
 import AirPay from './AirPay/AirPay';
-
-// Import your images
 import homeIcon from '../assets/homeIqon.png';
 import transferIcon from '../assets/transferIqon.png';
 import beneficiariesIcon from '../assets/beneficiariesIqon.png';
@@ -28,7 +26,6 @@ import {
 import SecondHome from './Home/SecondHome';
 import BeneficiaryHistory from './Beneficiaries/BeneficiaryHistory';
 import {ThemeContext} from '../../../App';
-import LoginScreen from './LoginScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -138,7 +135,7 @@ function CustomDrawerContent(props) {
       </View>
       <View style={styles.row}>
         <Image source={require('../assets/drawer3.png')} />
-        <Text style={styles.text}>Payement Services</Text>
+        <Text style={styles.text}>Payment Services</Text>
       </View>
       <View style={styles.row}>
         <Image source={require('../assets/drawer4.png')} />
@@ -246,6 +243,7 @@ function MyTabs() {
     </Tab.Navigator>
   );
 }
+
 const styles = StyleSheet.create({
   tabBar: {
     flexDirection: 'row',
@@ -263,7 +261,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const getStyle = (dark: any) =>
+const getStyle = dark =>
   StyleSheet.create({
     container: {
       backgroundColor: dark ? '#444343' : '#F1F3FB',
@@ -280,6 +278,7 @@ const getStyle = (dark: any) =>
     dark: {
       flexDirection: 'row',
       justifyContent: 'space-between',
+      alignItems: 'center',
     },
     row2: {
       flexDirection: 'row',
