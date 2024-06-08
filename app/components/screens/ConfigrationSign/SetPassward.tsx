@@ -184,11 +184,10 @@ const getStyle = (dark: any) =>
     errorText: {
       color: 'red',
       fontSize: 12,
-      marginTop: 5,
+      marginTop: -10,
+      marginBottom: 10,
     },
-    validationContainer: {
-      marginTop: 20,
-    },
+
     validationText: {
       fontSize: 14,
       color: '#B7B7B7',
