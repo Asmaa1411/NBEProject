@@ -115,7 +115,7 @@ const Drawer = createDrawerNavigator();
 
 function CustomDrawerContent(props) {
   const navigation = useNavigation();
-  const {dark} = useContext(ThemeContext);
+  const {dark, setDark} = useContext(ThemeContext);
   const styles = getStyle(dark);
 
   return (
@@ -156,10 +156,14 @@ function CustomDrawerContent(props) {
         <Image source={require('../assets/drawer7.png')} />
         <Text style={styles.text}>Calculators</Text>
       </View>
-      <View style={styles.row}>
-        <Image source={require('../assets/drawer8.png')} />
-        <Text style={styles.text}>Dark Mode</Text>
-        {/* <Switch value={dark} onChange={() => setDark(!dark)} /> */}
+      <View style={styles.dark}>
+        <View style={styles.row}>
+          <Image source={require('../assets/drawer8.png')} />
+          <Text style={styles.text}>Dark Mode</Text>
+        </View>
+        <View>
+          <Switch value={dark} onValueChange={() => setDark(!dark)} />
+        </View>
       </View>
       <View style={styles.row}>
         <TouchableOpacity
@@ -272,6 +276,10 @@ const getStyle = (dark: any) =>
       paddingLeft: 15,
       flexDirection: 'row',
       alignItems: 'center',
+    },
+    dark: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
     },
     row2: {
       flexDirection: 'row',
