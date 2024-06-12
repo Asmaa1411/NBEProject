@@ -4,16 +4,40 @@ import {useContext, useEffect} from 'react';
 import {View, Image, StyleSheet} from 'react-native';
 import splashCenter from '../assets/splashCenter.png';
 import splashBottom from '../assets/splashBottom.png';
-import {ThemeContext} from '../../../App';
+import {LoginContext, ThemeContext} from '../../../App';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 function Splash() {
   const {dark} = useContext(ThemeContext);
+  const {login, setIsLogin} = useContext(LoginContext);
   const styles = getStyle(dark);
   const navigation = useNavigation();
+  const GetIsLogin = async () => {
+    try {
+      const value = await AsyncStorage.getItem('isLogin');
+      console.log(value, 'isLogin');
+      return value !== null ? JSON.parse(value) : false;
+    } catch (e) {
+      console.error('Error getting dark mode preference:', e);
+      return false;
+    }
+  };
   useEffect(() => {
-    setTimeout(() => navigation.navigate('LoginScreen'), 3000);
+    setTimeout(async () => {
+      const isLogin = await GetIsLogin();
+      console.log('Splash: ', isLogin);
+      isLogin
+        ? navigation.navigate('MyTabs')
+        : navigation.navigate('LoginScreen');
+    }, 3000);
   }, []);
+  /*
 
+navigation.reset({
+            index: 0,
+            routes: [{name: 'MyTabs'}],
+          })
+            */
   return (
     <View style={styles.container}>
       <Image source={splashCenter} style={styles.splashCenter} />

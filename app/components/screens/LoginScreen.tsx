@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {
   View,
   Text,
@@ -14,12 +14,25 @@ import Logo from '../atoms/Logo';
 import SquareButton from '../atoms/SquareButton';
 import Label from '../atoms/Label';
 import LoginButton from '../atoms/LoginButton';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {LoginContext} from '../../../App';
 
 const LoginScreen = ({navigation}) => {
   const validationSchema = Yup.object().shape({
     username: Yup.string().required('Username is required'),
     password: Yup.string().required('Password is required'),
   });
+
+  const {login, setIsLogin} = useContext(LoginContext);
+
+  const toggleLogin = async value => {
+    try {
+      console.log(value, 'isLogin');
+      await AsyncStorage.setItem('isLogin', JSON.stringify(value));
+    } catch (e) {
+      console.error('Error saving dark mode preference:', e);
+    }
+  };
 
   return (
     <Formik
@@ -28,6 +41,10 @@ const LoginScreen = ({navigation}) => {
       onSubmit={values => {
         // Handle form submission
         console.log(values);
+        setIsLogin(!login);
+        toggleLogin(!login);
+        console.log('LoginScreen::', !login);
+
         navigation.navigate('MyTabs');
       }}>
       {({handleChange, handleBlur, handleSubmit, values, errors, touched}) => (

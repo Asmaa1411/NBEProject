@@ -25,11 +25,13 @@ import BeneficiaryHistory from './app/components/screens/Beneficiaries/Beneficia
 import AirPay from './app/components/screens/AirPay/AirPay';
 
 export const ThemeContext = createContext(null);
+export const LoginContext = createContext(null);
 const Stack = createNativeStackNavigator();
 
 const App = () => {
   const deviceColorScheme = useColorScheme();
   const [dark, setDark] = useState(deviceColorScheme === 'dark');
+  const [login, setIsLogin] = useState(false);
   const theme = dark ? DarkTheme : DefaultTheme;
 
   // دالة لاسترجاع حالة الدارك مود من AsyncStorage
@@ -44,10 +46,25 @@ const App = () => {
     }
   };
 
+  const GetIsLogin = async () => {
+    try {
+      const value = await AsyncStorage.getItem('isLogin');
+      console.log(value, 'isLogin');
+      return value !== null ? JSON.parse(value) : false;
+    } catch (e) {
+      console.error('Error getting dark mode preference:', e);
+      return false;
+    }
+  };
+
   // في مكان مناسب مثل App.js، استخدم useEffect لتحديث حالة الدارك مود عند بدء تشغيل التطبيق
   useEffect(() => {
     const fetchDarkMode = async () => {
       const darkMode = await getDarkMode();
+      const isLogin = await GetIsLogin();
+      console.log('App when get value:', isLogin);
+
+      setIsLogin(isLogin !== null ? isLogin : false);
       // إذا لم يتم تحديد قيمة دارك مود، استخدم القيمة الافتراضية لجهاز الاستخدام
       setDark(darkMode !== null ? darkMode : deviceColorScheme === 'dark');
     };
@@ -64,26 +81,31 @@ const App = () => {
 
   return (
     <ThemeContext.Provider value={{dark, setDark}}>
-      <NavigationContainer theme={theme}>
-        <Stack.Navigator
-          screenOptions={{
-            headerShown: false,
-          }}>
-          <Stack.Screen name="splash" component={Splash} />
-          <Stack.Screen name="LoginScreen" component={LoginScreen} />
-          <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
-          <Stack.Screen name="ConfigrationSign" component={ConfigrationSign} />
-          <Stack.Screen name="SetPassward" component={SetPassward} />
-          <Stack.Screen name="Congrats" component={Congrats} />
-          <Stack.Screen name="MyTabs" component={MyTabs} />
-          <Stack.Screen name="SecondHome" component={SecondHome} />
-          <Stack.Screen name="Transfer" component={Transfer} />
-          <Stack.Screen name="TransferOTP" component={TransferOTP} />
-          <Stack.Screen name="AddBeneficiary" component={AddBeneficiary} />
-          <Stack.Screen name="AirPay" component={AirPay} />
-          <Stack.Screen name="Home1" component={Home} />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <LoginContext.Provider value={{login, setIsLogin}}>
+        <NavigationContainer theme={theme}>
+          <Stack.Navigator
+            screenOptions={{
+              headerShown: false,
+            }}>
+            <Stack.Screen name="splash" component={Splash} />
+            <Stack.Screen name="LoginScreen" component={LoginScreen} />
+            <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
+            <Stack.Screen
+              name="ConfigrationSign"
+              component={ConfigrationSign}
+            />
+            <Stack.Screen name="SetPassward" component={SetPassward} />
+            <Stack.Screen name="Congrats" component={Congrats} />
+            <Stack.Screen name="MyTabs" component={MyTabs} />
+            <Stack.Screen name="SecondHome" component={SecondHome} />
+            <Stack.Screen name="Transfer" component={Transfer} />
+            <Stack.Screen name="TransferOTP" component={TransferOTP} />
+            <Stack.Screen name="AddBeneficiary" component={AddBeneficiary} />
+            <Stack.Screen name="AirPay" component={AirPay} />
+            <Stack.Screen name="Home1" component={Home} />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </LoginContext.Provider>
     </ThemeContext.Provider>
   );
 };

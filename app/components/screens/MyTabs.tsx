@@ -125,7 +125,13 @@ function CustomDrawerContent(props) {
       console.error('Error saving dark mode preference:', e);
     }
   };
-
+  const deleteState = async () => {
+    try {
+      await AsyncStorage.removeItem('isLogin');
+    } catch (e) {
+      console.error('Error getting dark mode preference:', e);
+    }
+  };
   return (
     <DrawerContentScrollView {...props} style={styles.container}>
       <View style={styles.logoButtonContainer}>
@@ -182,7 +188,10 @@ function CustomDrawerContent(props) {
       <View style={styles.row}>
         <TouchableOpacity
           style={styles.row2}
-          onPress={() => navigation.navigate('LoginScreen')}>
+          onPress={() => {
+            deleteState();
+            navigation.navigate('LoginScreen');
+          }}>
           <Image source={require('../assets/drawer9.png')} />
           <Text style={styles.text2}>Logout</Text>
         </TouchableOpacity>
