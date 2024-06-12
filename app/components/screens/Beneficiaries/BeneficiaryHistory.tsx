@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {
   View,
   Text,
@@ -10,8 +10,11 @@ import {
 } from 'react-native';
 import TopBar from '../../atoms/TopBar'; // تأكد من مسار استيراد TopBar
 import {historyData} from '../Home/historyData';
+import {ThemeContext} from '../../../../App';
 
 const BeneficiaryHistory = ({navigation, route}) => {
+  const {dark} = useContext(ThemeContext);
+  const styles = getStyle(dark);
   const {beneficiary} = route.params;
   const [showHistory, setShowHistory] = useState(false);
 
@@ -78,112 +81,113 @@ const BeneficiaryHistory = ({navigation, route}) => {
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#F1F3FB',
-  },
-  header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginHorizontal: 16,
-    marginVertical: 20,
-  },
-  headerTitle: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: '#1C2437',
-  },
-  beneficiaryInfoContainer: {
-    flexDirection: 'row',
-    backgroundColor: 'white',
-    padding: 16,
-    marginHorizontal: 16,
-    borderRadius: 10,
-    alignItems: 'center',
-  },
-  benImage: {
-    width: 50,
-    height: 50,
-    borderRadius: 25,
-    marginRight: 16,
-  },
-  beneficiaryDetails: {
-    flex: 1,
-  },
-  benName: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#1C2437',
-  },
-  benDetail: {
-    fontSize: 16,
-    color: '#B7B7B7',
-  },
-  content: {
-    flex: 1,
-    justifyContent: 'center',
-    marginHorizontal: 16,
-    marginVertical: 20,
-  },
-  image: {
-    marginBottom: 20,
-    alignSelf: 'center',
-  },
-  noBeneficiariesText: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#1C2437',
-    marginBottom: 10,
-    textAlign: 'center',
-  },
-  descriptionText: {
-    fontSize: 16,
-    color: '#464665',
-    textAlign: 'center',
-    marginHorizontal: 20,
-    marginBottom: 20,
-  },
-  historyText: {
-    fontSize: 16,
-    color: '#1C2437',
-    marginBottom: 10,
-  },
-  historyRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 10,
-  },
-  historyContent: {
-    flex: 1,
-    justifyContent: 'center',
-  },
-  historySubTitle: {
-    fontSize: 18,
-    fontWeight: '400',
-    color: '#1C2437',
-    marginBottom: 5,
-  },
-  historyDate: {
-    color: '#1C2437',
-    opacity: 0.5,
-    fontSize: 14,
-    fontWeight: '400',
-  },
-  historyPrice: {
-    fontSize: 18,
-    fontWeight: '700',
-    color: '#1C2437',
-  },
-  separator: {
-    height: 1,
-    backgroundColor: '#B7B7B7',
-    opacity: 0.5,
-    marginVertical: 3,
-  },
-  verticalScrollView: {
-    flex: 1,
-  },
-});
+const getStyle = (dark: any) =>
+  StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: dark ? '#1f1e1e' : '#F1F3FB',
+    },
+    header: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      marginHorizontal: 16,
+      marginVertical: 20,
+    },
+    headerTitle: {
+      fontSize: 20,
+      fontWeight: 'bold',
+      color: dark ? '#afaeae' : '#1C2437',
+    },
+    beneficiaryInfoContainer: {
+      flexDirection: 'row',
+      backgroundColor: 'white',
+      padding: 16,
+      marginHorizontal: 16,
+      borderRadius: 10,
+      alignItems: 'center',
+    },
+    benImage: {
+      width: 50,
+      height: 50,
+      borderRadius: 25,
+      marginRight: 16,
+    },
+    beneficiaryDetails: {
+      flex: 1,
+    },
+    benName: {
+      fontSize: 18,
+      fontWeight: 'bold',
+      color: '#1C2437',
+    },
+    benDetail: {
+      fontSize: 16,
+      color: '#B7B7B7',
+    },
+    content: {
+      flex: 1,
+      justifyContent: 'center',
+      marginHorizontal: 16,
+      marginVertical: 20,
+    },
+    image: {
+      marginBottom: 20,
+      alignSelf: 'center',
+    },
+    noBeneficiariesText: {
+      fontSize: 18,
+      fontWeight: 'bold',
+      color: dark ? '#afaeae' : '#1C2437',
+      marginBottom: 10,
+      textAlign: 'center',
+    },
+    descriptionText: {
+      fontSize: 16,
+      color: dark ? '#686666' : '#464665',
+      textAlign: 'center',
+      marginHorizontal: 20,
+      marginBottom: 20,
+    },
+    historyText: {
+      fontSize: 16,
+      color: '#1C2437',
+      marginBottom: 10,
+    },
+    historyRow: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      marginBottom: 10,
+    },
+    historyContent: {
+      flex: 1,
+      justifyContent: 'center',
+    },
+    historySubTitle: {
+      fontSize: 18,
+      fontWeight: '400',
+      color: '#1C2437',
+      marginBottom: 5,
+    },
+    historyDate: {
+      color: '#1C2437',
+      opacity: 0.5,
+      fontSize: 14,
+      fontWeight: '400',
+    },
+    historyPrice: {
+      fontSize: 18,
+      fontWeight: '700',
+      color: '#1C2437',
+    },
+    separator: {
+      height: 1,
+      backgroundColor: '#B7B7B7',
+      opacity: 0.5,
+      marginVertical: 3,
+    },
+    verticalScrollView: {
+      flex: 1,
+    },
+  });
 
 export default BeneficiaryHistory;

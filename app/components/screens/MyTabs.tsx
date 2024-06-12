@@ -26,6 +26,7 @@ import {
 import SecondHome from './Home/SecondHome';
 import BeneficiaryHistory from './Beneficiaries/BeneficiaryHistory';
 import {ThemeContext} from '../../../App';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Tab = createBottomTabNavigator();
 
@@ -115,6 +116,16 @@ function CustomDrawerContent(props) {
   const {dark, setDark} = useContext(ThemeContext);
   const styles = getStyle(dark);
 
+  // دالة لتحديث حالة الدارك مود وحفظها في AsyncStorage
+  const setDarkMode = async value => {
+    try {
+      console.log(value, 'dark');
+      await AsyncStorage.setItem('darkMode', JSON.stringify(value));
+    } catch (e) {
+      console.error('Error saving dark mode preference:', e);
+    }
+  };
+
   return (
     <DrawerContentScrollView {...props} style={styles.container}>
       <View style={styles.logoButtonContainer}>
@@ -159,7 +170,13 @@ function CustomDrawerContent(props) {
           <Text style={styles.text}>Dark Mode</Text>
         </View>
         <View>
-          <Switch value={dark} onValueChange={() => setDark(!dark)} />
+          <Switch
+            value={dark}
+            onValueChange={() => {
+              setDark(!dark);
+              setDarkMode(!dark);
+            }}
+          />
         </View>
       </View>
       <View style={styles.row}>

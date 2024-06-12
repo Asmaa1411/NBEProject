@@ -21,6 +21,8 @@ import SetPassward from './app/components/screens/ConfigrationSign/SetPassward';
 import Congrats from './app/components/screens/ConfigrationSign/Congrats';
 import AddBeneficiary from './app/components/screens/Beneficiaries/AddBeneficiary';
 import MyTabs from './app/components/screens/MyTabs';
+import BeneficiaryHistory from './app/components/screens/Beneficiaries/BeneficiaryHistory';
+import AirPay from './app/components/screens/AirPay/AirPay';
 
 export const ThemeContext = createContext(null);
 const Stack = createNativeStackNavigator();
@@ -30,19 +32,11 @@ const App = () => {
   const [dark, setDark] = useState(deviceColorScheme === 'dark');
   const theme = dark ? DarkTheme : DefaultTheme;
 
-  // دالة لتحديث حالة الدارك مود وحفظها في AsyncStorage
-  const setDarkMode = async value => {
-    try {
-      await AsyncStorage.setItem('darkMode', JSON.stringify(value));
-    } catch (e) {
-      console.error('Error saving dark mode preference:', e);
-    }
-  };
-
   // دالة لاسترجاع حالة الدارك مود من AsyncStorage
   const getDarkMode = async () => {
     try {
       const value = await AsyncStorage.getItem('darkMode');
+      console.log(value, 'daaaark');
       return value !== null ? JSON.parse(value) : false;
     } catch (e) {
       console.error('Error getting dark mode preference:', e);
@@ -86,7 +80,7 @@ const App = () => {
           <Stack.Screen name="Transfer" component={Transfer} />
           <Stack.Screen name="TransferOTP" component={TransferOTP} />
           <Stack.Screen name="AddBeneficiary" component={AddBeneficiary} />
-          <Stack.Screen name="AirPay" component={Home} />
+          <Stack.Screen name="AirPay" component={AirPay} />
           <Stack.Screen name="Home1" component={Home} />
         </Stack.Navigator>
       </NavigationContainer>

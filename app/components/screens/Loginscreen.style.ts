@@ -107,6 +107,7 @@ const styles = StyleSheet.create({
   },
   errorText: {
     color: 'red',
+    marginTop: -17,
   },
 });
 

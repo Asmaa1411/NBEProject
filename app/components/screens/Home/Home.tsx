@@ -230,7 +230,8 @@ const getStyle = (dark: any) =>
       height: 1,
       backgroundColor: '#B7B7B7',
       opacity: 0.5,
-      marginVertical: 3,
+      marginVertical: 10,
+      marginTop: -2,
     },
   });
 

@@ -39,6 +39,7 @@ const Label = (props: LabelTypes) => {
     backgroundColor,
     placeholderColor,
     borderColor,
+    inputTextColor,
     inputBorderColor,
   } = props;
   const [isFocused, setIsFocused] = useState(false);
@@ -70,7 +71,10 @@ const Label = (props: LabelTypes) => {
             <TextInput
               style={[
                 styles.input,
-                {borderColor: isFocused ? '#007236' : inputBorderColor},
+                {
+                  borderColor: isFocused ? '#007236' : inputBorderColor,
+                  color: inputTextColor,
+                },
               ]}
               placeholder={`Enter your ${title}`}
               placeholderTextColor={placeholderColor}

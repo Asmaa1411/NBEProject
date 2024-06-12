@@ -64,8 +64,9 @@ const LoginScreen = ({navigation}) => {
               value={values.username}
               titleColor="#FFF" // اللون الافتراضي للعنوان هو الأبيض
               backgroundColor="rgba(0, 0, 0, 0.3)" // اللون الافتراضي للخلفية
-              placeholderColor="#FFFFFF"
+              placeholderColor="rgba(255, 255, 255, 0.5)"
               borderColor="#FFFFFF80"
+              inputTextColor="#FFFFFF"
             />
             {errors.username && touched.username && (
               <Text style={styles.errorText}>{errors.username}</Text>
@@ -80,8 +81,9 @@ const LoginScreen = ({navigation}) => {
               value={values.password}
               titleColor="#FFF" // اللون الافتراضي للعنوان هو الأبيض
               backgroundColor="rgba(0, 0, 0, 0.3)" // اللون الافتراضي للخلفية
-              placeholderColor="#FFFFFF"
+              placeholderColor="rgba(255, 255, 255, 0.5)"
               borderColor="#FFFFFF80"
+              inputTextColor="#FFFFFF"
             />
             {errors.password && touched.password && (
               <Text style={styles.errorText}>{errors.password}</Text>
