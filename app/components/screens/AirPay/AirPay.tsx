@@ -1,87 +1,62 @@
 /* eslint-disable prettier/prettier */
 import React, {useContext} from 'react';
-import {
-  View,
-  Image,
-  ScrollView,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import TopBar from '../../atoms/TopBar';
-import {historyData} from './historyData';
-import {green} from 'react-native-reanimated/lib/typescript/reanimated2/Colors';
 import LoginButton from '../../atoms/LoginButton';
 import {ThemeContext} from '../../../../App';
-// import {useTheme} from '@react-navigation/native';
+import {DraxProvider, DraxScrollView, DraxView} from 'react-native-drax';
+import DraggableCard from '../../atoms/DraggableCard';
+import {blue} from 'react-native-reanimated/lib/typescript/reanimated2/Colors';
+import CreditCard from '../../atoms/creditCard';
+import {creditCards} from './AirPayData';
 
 const AirPay = ({navigation}) => {
   const {dark} = useContext(ThemeContext);
   const styles = getStyle(dark);
 
+  const [received, setReceived] = React.useState<React.JSX.Element>(
+    <Text>Touch & hold a card then drag it to this box</Text>,
+  );
+
   return (
-    <View style={styles.container}>
-      <TopBar navigation={navigation} onNotificationPress={() => {}} />
-      <Text style={styles.scrollTitle}>Cards</Text>
-      <ScrollView
-        horizontal
-        style={styles.horizontalScrollView}
-        showsHorizontalScrollIndicator={false}>
-        {[1, 2].map((item, index) => (
-          <TouchableOpacity key={index} style={styles.imageContainer}>
-            <View style={styles.imageWrapper}>
-              <Image
-                source={require('../../assets/visa.png')}
-                style={styles.accountImage}
-              />
-
-              <View style={styles.colorOverlay} />
-              <View style={styles.cardDetails}>
-                <Text style={styles.cardBalance}>$125,381.15</Text>
-                <Image
-                  source={require('../../assets/visaIgon1.png')}
-                  style={styles.iconTopRight}
-                />
-                <View style={styles.cardNumber}>
-                  <Text style={styles.cardNumberSegment}>
-                    **** **** **** 6506
-                  </Text>
-
-                  <View style={styles.iconNextToNumber}>
-                    <Image
-                      source={require('../../assets/visaIgon2.png')}
-                      style={[styles.iconNextToNumber1, {flex: 1}]}
-                    />
-                    <Image
-                      source={require('../../assets/wifi.png')}
-                      style={[styles.iconNextToNumber2, {flex: 1}]}
-                    />
-                  </View>
-                </View>
-                <View style={styles.cardTextContainer}>
-                  <View style={styles.cardTextColumn}>
-                    <Text style={styles.cardTextTitle}>CARD HOLDER</Text>
-                    <Text style={styles.cardText}>ASMAA SAAD</Text>
-                  </View>
-                  <View style={styles.cardTextColumn}>
-                    <Text style={styles.cardTextTitle}>EXPIRES</Text>
-                    <Text style={styles.cardText}>08/25</Text>
-                  </View>
-                  <View style={styles.cardTextColumn}>
-                    <Text style={styles.cardTextTitle}>CVV</Text>
-                    <Text style={styles.cardText}>352</Text>
-                  </View>
-                </View>
-              </View>
-            </View>
-          </TouchableOpacity>
-        ))}
-      </ScrollView>
-      <LoginButton
-        onPress={() => navigation.navigate('TransferOTP')}
-        title={'Pay Now'}
-      />
-    </View>
+    <GestureHandlerRootView style={{flex: 1}}>
+      <DraxProvider>
+        <View style={styles.container}>
+          <TopBar navigation={navigation} onNotificationPress={() => {}} />
+          <Text style={styles.scrollTitle}>Cards</Text>
+          <DraxScrollView
+            horizontal={true}
+            style={styles.horizontalScrollView}
+            contentContainerStyle={{backgroundColor: 'red', height: 205}}
+            showsHorizontalScrollIndicator={false}>
+            {creditCards.map((cardData, index) => (
+              <DraggableCard key={index} cardData={cardData} styles={styles} />
+            ))}
+          </DraxScrollView>
+          <DraxView
+            renderContent={() => {
+              return received;
+            }}
+            style={styles.cardDrag}
+            receivingStyle={{
+              backgroundColor: 'black',
+            }}
+            onReceiveDragDrop={event => {
+              const cardId = event.dragged.payload;
+              const card = creditCards.find(card => cardId === card.id);
+              if (card) setReceived(<CreditCard data={card} />);
+            }}
+          />
+          <View style={styles.buttonContainer}>
+            <LoginButton
+              onPress={() => navigation.navigate('TransferOTP')}
+              title={'Pay Now'}
+            />
+          </View>
+        </View>
+      </DraxProvider>
+    </GestureHandlerRootView>
   );
 };
 
@@ -92,6 +67,13 @@ const getStyle = (dark: any) =>
       paddingHorizontal: 10,
       backgroundColor: dark ? '#1f1e1e' : '#F1F3FB',
     },
+    cardDrag: {
+      height: 210,
+      backgroundColor: 'green',
+      justifyContent: 'center',
+      alignItems: 'center',
+      marginVertical: 10,
+    },
     scrollTitle: {
       fontSize: 20,
       marginBottom: 10,
@@ -99,7 +81,8 @@ const getStyle = (dark: any) =>
       fontFamily: 'Roboto-Bold',
     },
     horizontalScrollView: {
-      marginBottom: -300,
+      height: 260,
+      backgroundColor: 'blue',
     },
     imageContainer: {
       marginRight: 10,
@@ -195,6 +178,14 @@ const getStyle = (dark: any) =>
       position: 'absolute',
       top: 3,
       left: 50,
+    },
+    buttonContainer: {
+      position: 'absolute',
+      bottom: 0,
+      left: 0,
+      right: 0,
+      alignItems: 'center',
+      paddingHorizontal: 10,
     },
   });
 

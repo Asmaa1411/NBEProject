@@ -12,6 +12,8 @@ import TopBar from '../../atoms/TopBar';
 import {historyData} from './historyData';
 import {green} from 'react-native-reanimated/lib/typescript/reanimated2/Colors';
 import {ThemeContext} from '../../../../App';
+import CreditCard from '../../atoms/creditCard';
+import {creditCards} from '../AirPay/AirPayData';
 // import {useTheme} from '@react-navigation/native';
 
 const SecondHome = ({navigation}) => {
@@ -29,56 +31,12 @@ const SecondHome = ({navigation}) => {
         horizontal
         style={styles.horizontalScrollView}
         showsHorizontalScrollIndicator={false}>
-        {[1, 2].map((item, index) => (
+        {creditCards.map((item, index) => (
           <TouchableOpacity
             key={index}
             onPress={() => navigation.navigate('SecondHome')}
             style={styles.imageContainer}>
-            <View style={styles.imageWrapper}>
-              <Image
-                source={require('../../assets/visa.png')}
-                style={styles.accountImage}
-              />
-
-              <View style={styles.colorOverlay} />
-              <View style={styles.cardDetails}>
-                <Text style={styles.cardBalance}>$125,381.15</Text>
-                <Image
-                  source={require('../../assets/visaIgon1.png')}
-                  style={styles.iconTopRight}
-                />
-                <View style={styles.cardNumber}>
-                  <Text style={styles.cardNumberSegment}>
-                    **** **** **** 6506
-                  </Text>
-
-                  <View style={styles.iconNextToNumber}>
-                    <Image
-                      source={require('../../assets/visaIgon2.png')}
-                      style={[styles.iconNextToNumber1, {flex: 1}]}
-                    />
-                    <Image
-                      source={require('../../assets/wifi.png')}
-                      style={[styles.iconNextToNumber2, {flex: 1}]}
-                    />
-                  </View>
-                </View>
-                <View style={styles.cardTextContainer}>
-                  <View style={styles.cardTextColumn}>
-                    <Text style={styles.cardTextTitle}>CARD HOLDER</Text>
-                    <Text style={styles.cardText}>ASMAA SAAD</Text>
-                  </View>
-                  <View style={styles.cardTextColumn}>
-                    <Text style={styles.cardTextTitle}>EXPIRES</Text>
-                    <Text style={styles.cardText}>08/25</Text>
-                  </View>
-                  <View style={styles.cardTextColumn}>
-                    <Text style={styles.cardTextTitle}>CVV</Text>
-                    <Text style={styles.cardText}>352</Text>
-                  </View>
-                </View>
-              </View>
-            </View>
+            <CreditCard data={item} />
           </TouchableOpacity>
         ))}
       </ScrollView>
